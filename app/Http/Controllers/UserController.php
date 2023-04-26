@@ -8,22 +8,31 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    protected $model;
+
+    public function __construct(User $user)
+    {
+        $this->model = $user;
+    }
+
     public function index()
     {
+
         $users = User::get();
       
-        return view('users.index', compact('users'));
+        return view('index', compact('users'));
     }
 
     public function show($id)
     {
        // $user = User::where('id', '=', $id)->first();
-       if (!$user = User::find($id))
+       if (!$user = $this->model->find($id))
            return redirect()->route('users.index'); 
 
         return view('users.show', compact('user'));
     }
 
+    // CRIAR USUÁRIO #####################################################################    
     public function create()
     { 
         return view('users.create');
@@ -46,17 +55,19 @@ class UserController extends Controller
         // $user->->save();
     }
 
+    // EDITAR USUÁRIO #####################################################################    
     public function edit($id)
     {
-        if (!$user = User::find($id))
+        if (!$user = $this->model->find($id))
            return redirect()->route('users.index');
 
            return view('users.edit', compact('user'));
     }
 
+    // ATUALIZAR USUÁRIO #####################################################################    
     public function update(StoreUpdateUserFormRequest $request, $id)
     {
-        if (!$user = User::find($id))
+        if (!$user = $this->model->find($id))
            return redirect()->route('users.index');
 
         $data = $request->only('name', 'email');
@@ -67,9 +78,10 @@ class UserController extends Controller
         return redirect()->route('users.index');
     }
 
+    // DELETAR USUÁRIO #####################################################################    
     public function delete($id)
     {
-       if (!$user = User::find($id))
+       if (!$user = $this->model->find($id))
            return redirect()->route('users.index'); 
 
         $user->delete();   

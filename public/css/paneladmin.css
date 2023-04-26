@@ -1,0 +1,53 @@
+/* <<<<<<<<<<<<<<<<<<<<<<< Panel Admin >>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+* body {
+  max-width: 1369px;
+  margin: 0 auto;
+}
+
+h3 {
+    font-size: 20px;
+    text-align: center;
+    background-color: rgb(196, 183, 165);
+    padding: 10px;
+    margin-bottom: 2px;
+  }
+  
+  main {
+    display: flex;
+    height: 600px;
+  }
+  
+  main nav {
+    flex: 0.2;
+    background-color: #cebfab;
+  }
+  
+  main nav h1 {
+    text-align: center;
+    background-color: #363636;
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+    margin: 0px;
+  }
+  
+  main nav a {
+    text-decoration: none;
+    padding: 8px;
+    color: black;
+    display: block;
+    margin: 0px; 
+  }
+  
+  main nav a:hover {
+    color: black;
+    background-color: rgb(196, 183, 165);
+  }
+  
+  main section {
+    flex: 1;
+    background-color: rgb(230, 230, 230);
+    margin-left: 2px;
+  }
+
+ 
