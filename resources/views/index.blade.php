@@ -14,7 +14,6 @@
     <title>@yield('titulo')</title> 
     <link rel="icon" type="image/x-icon" href="imgicon/favicon-estudandomusica.png">
 
-
     <link rel="stylesheet" href="{{asset('panel/plugins/fontawesome-free/css/all.min.css')}}">
 
     <script src="{{asset('panel/plugins/cropper/jquery-3.6.1.js')}}"></script>
@@ -32,33 +31,12 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
 
-
     <!-- Custom styles for this template-->
     <link href="/cssp/sb-admin-2.min.css" rel="stylesheet">
-
     <link href="/css/index.css" rel="stylesheet">
-
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head> 
-
-<style>
-    .card button  {
-        color: white;
-        border: 2px #AB9988;
-        font-size: 12px;
-        letter-spacing: 2px;
-        background: #39342c;
-        text-decoration: none;
-        padding: 5px;
-    }
-    .card button:hover  {
-        color: white;
-        background: #413b32;
-        text-decoration: none;
-    }
-</style>
-
 
 <body id="page-top">
 
@@ -1210,7 +1188,6 @@
 
     <script src="/vendor/jquery/jquery.min.js"></script>
     <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
     <script src="/assets/bootstrap/bootstrap/jquery-3.6.3.min.js"></script>
     <script src="/assets/bootstrap/bootstrap/jquery.min.js"></script>
 

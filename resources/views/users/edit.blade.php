@@ -7,7 +7,7 @@
 
     @include('includes.validations-form')
 
-    <form action="{{ route('users.update', $user->id) }}" method="post">
+    <form action="{{ route('users.update', $user->id) }}" method="post" enctype="multipart/form-data">
         @method('PUT')
         @csrf
         @include('users._partials.form')

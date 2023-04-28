@@ -20,7 +20,7 @@ class UserController extends Controller
 
         $users = User::get();
       
-        return view('index', compact('users'));
+        return view('users.index', compact('users'));
     }
 
     public function show($id)
@@ -43,16 +43,17 @@ class UserController extends Controller
         $data = $request->all();
         $data['password'] = bcrypt($request->password);
 
-        $user = User::create($data);
+        if ($request->image) {
+            $data['image'] = $request->image->store('users');
+            // $extension = $request->image->getClientOriginalExtension();
+            // $data['image'] = $request->image->storeAs('users', now() . ".{$extension}");
+
+        }
+
+        User::create($data);
 
         // return redirect()->route('users.show', $user);
         return redirect()->route('users.index');
-
-        // $user = new User;
-        // $user->nome = $request->nome;
-        // $user->email = $request->email;
-        // $user->password = $request->password;
-        // $user->->save();
     }
 
     // EDITAR USUÁRIO #####################################################################    
@@ -73,19 +74,36 @@ class UserController extends Controller
         $data = $request->only('name', 'email');
         if ($request->password)
             $data['password'] = bcrypt($request->password);
+
+        if ($request->image) {
+            if ($user->image && Storage::exists($user->image)) {
+                Storage::delete($user->image);
+            }
+            $data['image'] = $request->image->store('users');
+        }
         $user->update($data); 
         
         return redirect()->route('users.index');
     }
 
-    // DELETAR USUÁRIO #####################################################################    
+    // DELETAR USUÁRIO ---------------------------------------------------    
     public function delete($id)
     {
        if (!$user = $this->model->find($id))
            return redirect()->route('users.index'); 
 
-        $user->delete();   
-
+        $user->delete(); 
+   
         return redirect()->route('users.index');
+    }
+
+    // MATRICULA - LOCAL ------------------------------------------------
+    public function local_matricula() {
+        return view('local-matricula');
+    }
+
+    // ALUNOS - MENSALIDADE ---------------------------------------------
+    public function formulario_mensalidade () {
+        return view('formulario-mensalidade');
     }
 }

@@ -12,6 +12,22 @@
     top: 36%;
 }
 
+/* button pagina inicial */
+.card button  {
+    color: white;
+    border: 2px #AB9988;
+    font-size: 12px;
+    letter-spacing: 2px;
+    background: #39342c;
+    text-decoration: none;
+    padding: 5px;
+}
+.card button:hover  {
+    color: white;
+    background: #413b32;
+    text-decoration: none;
+}
+
 /* #mainSlider .carousel-caption h2 {
     font-size: 50px;
     margin-bottom: 15px;
