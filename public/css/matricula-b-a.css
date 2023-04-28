@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2? family= Poppins:ital,wght@0,200;0,300;0,400;0,500;1,100;1,400 & display=swap'); */
+    * body {
+        max-width: 1200px;
+        margin: 0 auto;
+        font-family: 'Poppins', sans-serif;
+        }
+        div .btn {
+        background: #7c7b7a;
+        color: rgb(255, 255, 255);
+        font-size: 14px;
+        border: none;
+        margin-bottom: 21px;
+        }    
+        div .btn-lg:hover  {
+        background: #8a7a6c;
+        color: rgb(255, 255, 255);
+        border: none;
+    }
+
+    /*  Smartphone Landscape  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+    @media (min-width: 200px){
+        .card .card-body {
+        margin-top: -3px;
+        }
+
+        /* ANDAMENTO DO PROCESSO */
+        .content .text-center {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding: 0;
+        width: 100px;
+        letter-spacing: 1px;
+        font-size: 13px;
+        }
+
+        .form-row h2 {
+        text-align: center;
+        margin-top: 30px;
+        letter-spacing: 1px;
+        font-size: 18px;
+        /* color: blue; */
+        }
+        .img-fluid {
+        margin-top: -5px;
+        width: 100px;
+        } 
+        .text {
+        font-size: 16px;
+        letter-spacing: 1px;
+        font-weight: 500;
+        }
+        .text-left {
+        margin-top: 0px;
+        }
+        label {
+        font-size: 15px;
+        letter-spacing: 1px;
+        font-weight: 300;
+        }
+        input {
+        margin-top: 2px;
+        margin-bottom: -6px;
+        }
+        .card .card-body {
+        padding: 0px;
+        } 
+        footer .img-fluid {
+        width: 100px;
+        margin-top: -10px;
+        margin-bottom: 30px;
+        align-self: center;
+        }
+        .rodape {
+        height: 4px;
+        background-color: #c2b1a1;
+        margin-bottom: 0px;
+        }
+    } 
+
+    /*  Smartphone Landscape  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+    @media (min-width: 576px) { 
+        /* ANDAMENTO DO PROCESSO */
+        .content .text-center {
+        margin-top: 25px;
+        margin-bottom: 25px;
+        padding: 0;
+        width: 100px;
+        letter-spacing: 2px;
+        font-size: 13px;
+        }
+        .img-fluid {
+        width: 100px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        }
+        .form-row h2 {
+        text-align: center;
+        margin-top: 30px;
+        letter-spacing: 1px;
+        font-size: 18px;
+        /* color: rgb(180, 96, 0); */
+        }
+        .card .card-body {
+        padding: 5px;
+        }
+    } 
+
+    /*  Tablet Portrait  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+    @media (min-width: 768px){
+        /* ANDAMENTO DO PROCESSO */
+        .content .text-center {
+        margin-top: 30px;
+        margin-bottom: 20px;
+        padding: 0;
+        width: 100px;
+        letter-spacing: 2px;
+        font-size: 13px;
+        }
+        .form-row h2 {
+        text-align: center;
+        margin-top: 30px;
+        letter-spacing: 1px;
+        font-size: 18px;
+        /* color: rgb(185, 151, 0); */
+        }    
+        .card .card-body {
+        padding: 10px;
+        }
+    } 
+
+    /*  Tablet Landscape  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+    @media (min-width: 992px){
+        /* ANDAMENTO DO PROCESSO */
+        .content .text-center {
+        margin-top: 30px;
+        margin-bottom: 25px;
+        padding: 0;
+        width: 100px;
+        letter-spacing: 2px;
+        font-size: 13px;
+        }
+        .form-row h2 {
+        text-align: center;
+        margin-top: 30px;
+        letter-spacing: 1px;
+        font-size: 18px;
+        /* color: rgb(0, 138, 57); */
+        }
+        .img-fluid {
+        width: 100px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        }
+        .card .card-body {
+        padding: 15px;
+        }
+    }
+
+    /* Notebooks e PCs Modernos  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+    @media (min-width: 1200px) {
+        /* ANDAMENTO DO PROCESSO */
+        .content .text-center {
+        margin-top: 30px;
+        margin-bottom: 25px;
+        padding: 0;
+        width: 100px;
+        letter-spacing: 2px;
+        font-size: 13px;
+        }
+        .card .card-body {
+        padding: 20px;
+        }
+    }
+
+    /* Notebooks e PCs Modernos  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+    @media (min-width: 1400px){
+        /* ANDAMENTO DO PROCESSO */
+        .content .text-center {
+        margin-top: 30px;
+        margin-bottom: 25px;
+        padding: 0;
+        width: 100px;
+        letter-spacing: 2px;
+        font-size: 13px;
+        }
+        .img-fluid {
+        width: 100px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        }
+        .form-row h2 {
+        text-align: center;
+        margin-top: 30px;
+        letter-spacing: 1px;
+        font-size: 18px;
+        /* color: rgb(255, 1, 1); */
+        }
+        .card .card-body {
+        padding: 30px;
+        }
+    }

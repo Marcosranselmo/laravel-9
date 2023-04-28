@@ -27,6 +27,49 @@ class User extends Authenticatable
         'email',
         'password',
         'image',
+
+        'ativo',
+        'firstName',
+        'lastName',
+        'celular',
+
+        'IdadeAtual',
+        'dataNascimento',
+        'escolaridade',
+        'sexo',
+
+        'logradouro',
+        'numero',
+        'bairro',
+        'cidade',
+        'estado',
+        'cep',
+
+        'curso',
+        'periodo',
+        'horario',
+        'localDoCurso',
+
+        'uniforme',
+        'modelo',
+
+        'image',
+
+        'usuario',
+        'email',
+        'password',
+
+        'permissao01',
+        'permissao02',
+        'permissao03',
+        'permissao04',
+        'permissao05',
+        'permissao06',
+        'permissao07',
+        'permissao08',
+        'permissao09',
+        'permissao10',
+
     ];
 
     /**

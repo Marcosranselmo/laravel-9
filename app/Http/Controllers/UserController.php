@@ -20,7 +20,7 @@ class UserController extends Controller
 
         $users = User::get();
       
-        return view('users.index', compact('users'));
+        return view('index', compact('users'));
     }
 
     public function show($id)
@@ -97,9 +97,33 @@ class UserController extends Controller
         return redirect()->route('users.index');
     }
 
-    // MATRICULA - LOCAL ------------------------------------------------
+    // MATRICULA - LOCAL -------------------------------------------------------------------
     public function local_matricula() {
         return view('local-matricula');
+    }
+
+    // MATRICULA BAIRRO = APARECIDA --------------------------------------------------------
+    public function matricula_bairro_aparecida () {
+        return view('/matricula-bairro-aparecida');
+    }
+
+    public function matricula_bairro_aparecida_create(StoreUpdateUserFormRequest $request)
+    {
+        $data = $request->all();
+        $data['password'] = bcrypt($request->password);
+        $user = User::create($data);
+
+        // if ($request->image) {
+        //     $data['image'] = $request->image->store('users');
+            // $extension = $request->image->getClientOriginalExtension();
+            // $data['image'] = $request->image->storeAs('users', now() . ".{$extension}");
+
+        // }
+
+        // User::create($data);
+
+        // return redirect()->route('users.show', $user);
+        return redirect('/index');
     }
 
     // ALUNOS - MENSALIDADE ---------------------------------------------
