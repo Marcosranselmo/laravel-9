@@ -4,6 +4,8 @@ use App\Http\Controllers\{
     UserController
 };
 use App\Http\Controllers\Admin\CommentController;
+use App\Http\Controllers\LoginController;
+
 use Illuminate\Support\Facades\Route;
 
 Route::get('/index', [UserController::class, 'index'])->name('index');
@@ -17,10 +19,12 @@ Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
 
 
 
+Route::view('/login', 'login.form')->name('login.form');
+Route::post('/auth', [LoginController::class, 'auth'])->name('login.auth');
 
-Route::get('/dashboard', 'App\Http\Controllers\LoginController@login');
-Route::post('/dashboard/efetua-login', 'App\Http\Controllers\panelController@efetlogin');
-Route::get('/dashboard/homeadmin', 'App\Http\Controllers\panelController@homeadmin');
+// Route::post('/dashboard/auth', 'App\Http\Controllers\LoginController@login.auth');
+// Route::post('/dashboard/efetua-login', 'App\Http\Controllers\panelController@efetlogin');
+// Route::get('/dashboard/homeadmin', 'App\Http\Controllers\panelController@homeadmin');
 
 // #####  INSCRIÇÃO NOVO ALUNO  #####
 Route::get('/local-matricula', 'App\Http\Controllers\UserController@local_matricula');

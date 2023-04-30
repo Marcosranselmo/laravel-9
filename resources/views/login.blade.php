@@ -7,178 +7,13 @@
     <title>Login</title>
     <link rel="icon" type="image/x-icon" href="imgicon/favicon-estudandomusica.png">
 
-    <link rel="stylesheet" type="text/css" href="/cssp/sb-admin-2.min.css">
+    <link rel="stylesheet" type="text/css" href="css/login.css">
    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
-    
+   
 </head>
 
-<style>
-@import url('https://fonts.googleapis.com/css2? family= Poppins:ital,wght@0,200;0,300;0,400;0,500;1,100;1,400 & display=swap'); */
-* body {
-        max-width: 1369px;
-        margin: 0 auto;
-        height: 0;
-        font-family: 'Poppins', sans-serif;
-    }
-      
-    div .btn {
-        background: #AB9988;
-        color: rgb(255, 255, 255);
-        font-size: 14px;
-        height: 40px;
-        border: none;
-    }    
-    div .btn-lg:hover  {
-        background: #8a7a6c;
-        color: rgb(255, 255, 255);
-        border: none;
-    } 
-
-    /* faça sua */
-    .text-center h6 {
-        font-size: 14px;
-        color: #AB9988;
-        letter-spacing: 0.4px;
-        font-weight: 500;
-    }
-
-    /* Inscrição aqui */
-    .text-center a {
-        font-size: 14px;
-        color: #AB9988;
-        font-weight: 400;
-    }
-
-    .text-center a:hover {
-        color: #64584d;
-}
-
-/*  Smartphone Portrait  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
-
-/*  Smartphone Landscape  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
-@media (min-width: 320px){
-    body {
-        margin-top: 70px;
-        background-color: #ab9980;
-    }
-    .mx-auto {
-        margin-top: 130px;
-    }
-    .card {
-        width: 340px;
-    }
-    .card-body{
-        padding: 0px;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        margin-left: 10px;
-        margin-right: 10px;
-    }
-
-    h1 {
-        color: white;
-        font-size: 25px;
-        margin-top: 20px;
-        text-align: center;
-    }
-} 
-
-/*  Smartphone Landscape  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
-@media (min-width: 576px){
-    body {
-        margin-top: 70px;
-        background-color: #ab9980;
-    }
-    .mx-auto {
-        margin-top: 100px;
-    }
-    .card {
-        width: 400px;
-    }
-    .card-body{
-        padding: 0px;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        margin-left: 20px;
-        margin-right: 20px;
-    }
-
-    h1 {
-        color: white;
-        font-size: 25px;
-        margin-top: 20px;
-        text-align: center;
-    }
-} 
-
-/*  Tablet Portrait  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
-@media (min-width: 768px){
-    body {
-        background-color: #ab9980;
-    }
-    .mx-auto {
-        margin-top: 120px;
-    }
-    .card {
-        width: 400px;
-    }
-    .card-body{
-        padding: 15px;
-    }
-}
-
-/*  Tablet Landscape  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
-@media (min-width: 992px){
-    body {
-        background-color: #ab9980;
-    }
-    .mx-auto {
-        margin-top: 180px;
-    }
-    .card-body{
-        padding: 20px;
-    }
-}
-
-/* Notebooks e PCs Modernos  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
-@media (min-width: 1200px){
-    .body {
-        background-color: #ab9980;
-    }
-    .mx-auto {
-        margin-top: 180px;
-    }
-    .card {
-        width: 400px;
-    }
-    .card-body{
-        padding: 15px;
-    }
-}
-
-/* Notebooks e PCs Modernos  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
-@media (min-width: 1400px){
-    body {
-        background-color: #ab9980;
-    }
-    .mx-auto {
-        margin-top: 180px;
-        height: 400px;
-    }
-    .card {
-        width: 400px;
-    }
-    .card-body{
-        height: 50px;
-        padding: 20px;
-    }
-}
-
-</style>
-
-<body class="mx-auto">
+<body class="mx-auto" style="background-color: #ab9980">
     <div class="card shadow mt-3 mb-5 col-lg-5 col-md-6 col-sm-8 col-12 mx-auto">
         <div class="card-body">
             @if (Session::get('lg_tentativas')<6)
@@ -206,7 +41,7 @@
                 @endif 
 
 
-            <form action="dashboard/efetua-login" method="POST">
+            <form action="{{ route('login.auth') }}" method="POST">
                 @csrf
                 <div class="form-row">
                     <div class="col-md-12 col-sm-5 col-5" style="background: white; justify-content: center; display: flex;">
