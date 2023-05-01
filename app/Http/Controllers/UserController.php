@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreUpdateUserFormRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -38,7 +37,7 @@ class UserController extends Controller
         return view('users.create');
     }
 
-    public function store(StoreUpdateUserFormRequest $request)
+    public function store(Request $request)
     {
         $data = $request->all();
         $data['password'] = bcrypt($request->password);
@@ -66,7 +65,7 @@ class UserController extends Controller
     }
 
     // ATUALIZAR USUÁRIO #####################################################################    
-    public function update(StoreUpdateUserFormRequest $request, $id)
+    public function update(Request $request, $id)
     {
         if (!$user = $this->model->find($id))
            return redirect()->route('users.index');
@@ -107,22 +106,12 @@ class UserController extends Controller
         return view('/matricula-bairro-aparecida');
     }
 
-    public function matricula_bairro_aparecida_create(StoreUpdateUserFormRequest $request)
+    public function matricula_bairro_aparecida_create(Request $request)
     {
         $data = $request->all();
         $data['password'] = bcrypt($request->password);
         $user = User::create($data);
 
-        // if ($request->image) {
-        //     $data['image'] = $request->image->store('users');
-            // $extension = $request->image->getClientOriginalExtension();
-            // $data['image'] = $request->image->storeAs('users', now() . ".{$extension}");
-
-        // }
-
-        // User::create($data);
-
-        // return redirect()->route('users.show', $user);
         return redirect('/index');
     }
 
