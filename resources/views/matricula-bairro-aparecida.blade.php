@@ -60,8 +60,15 @@
     <div class="card shadow mb-5 col-lg-8 col-md-10 col-sm-10 mx-auto" style="max-width: 700px;">
         <div class="card-body">
 
-            @include('includes.validations-form')
+            {{-- @include('includes.validations-form') --}}
 
+            @if ($errors->any())
+                <ul class="errors">
+                    @foreach ($errors->all() as $error)
+                        <li class="error">{{ $error }}</li>
+                    @endforeach
+                </ul>
+            @endif    
             <form action="/matricula-bairro-aparecida-create" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-row mt-0"> 
@@ -213,14 +220,14 @@
                         </div>  
                         <div class="form-group col-md-6 col-sm-6">
                             <label class="mb-0">Email</label>
-                            <input type="email" name="email" class="form-control" required="required">
+                            <input type="email" name="email" class="form-control">
                         </div>  
                         <div class="form-group col-md-6 col-sm-6">
                             <label class="mb-0">Senha: 6 a 20 carecteres.</label>
                             <input type="password" name="password" class="form-control">
                         </div>
                   
-                </div>  
+                </div>     
                 
                 <div>
                     <button type="submit" class="btn btn-lg btn-block  mt-3 mx-auto" 

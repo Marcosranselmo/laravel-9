@@ -11,10 +11,6 @@ use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
 
-    // public function login() {
-    //     return view('/login.form');
-    // }
-
     public function auth(Request $request) {
 
         $credenciais = $request->validate([

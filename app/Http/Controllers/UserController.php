@@ -75,12 +75,12 @@ class UserController extends Controller
         if ($request->password)
             $data['password'] = bcrypt($request->password);
 
-        if ($request->image) {
-            if ($user->image && Storage::exists($user->image)) {
-                Storage::delete($user->image);
-            }
-            $data['image'] = $request->image->store('users');
-        }
+        // if ($request->image) {
+        //     if ($user->image && Storage::exists($user->image)) {
+        //         Storage::delete($user->image);
+        //     }
+        //     $data['image'] = $request->image->store('users');
+        // }
         $user->update($data); 
         
         return redirect()->route('users.index');

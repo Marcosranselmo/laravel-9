@@ -16,43 +16,24 @@ class StoreUpdateUserFormRequest extends FormRequest
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, mixed>
-     */
     public function rules()
     {
-        $id = $this->id ?? '';
+        return [
 
-        $rules = [
-            'firstName' => 'required|string|max:255|min:3',
             'email' => [
                 'required',
-                'email',
-                "unique:users,email,{$id},id",
-            ],
-            'password' => [
-                'required',
-                'min:6',
-                'max:15',
-            ],
-            'image' => [
-                'nullable',
-                'image',
-                'max:2048',
-            ],
+                'email', 
+                'unique:users',
+            ], 
+            [
+                'email.required' => 'Digite um email'
+            ]
+            // 'passoword' => [
+            //     'required',
+            //     'min:6',
+            //     'max:15',
+            // ]
         ];
-
-        if ($this->method('PUT')) {
-            $rules['password'] = [
-                'nullable',
-                // 'required',
-                'min:6',
-                'max:15',
-            ];
-        }
-
-        return $rules;
     }
 }
+
