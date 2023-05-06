@@ -101,11 +101,12 @@ class UserController extends Controller
         return view('local-matricula');
     }
 
-    // MATRICULA BAIRRO = APARECIDA --------------------------------------------------------
+    // VIEW BAIRRO = APARECIDA --------------------------------------------------------
     public function matricula_bairro_aparecida () {
         return view('/matricula-bairro-aparecida');
     }
 
+    // MATRICULA BAIRRO = APARECIDA --------------------------------------------------------
     public function matricula_bairro_aparecida_create(Request $request)
     {
         $data = $request->all();
@@ -114,6 +115,21 @@ class UserController extends Controller
 
         return redirect('/index');
     }
+
+    // VIEW BAIRRO = CIDADE NOVA --------------------------------------------------------
+    public function matricula_bairro_cidade_nova () {
+        return view('/matricula-bairro-cidade-nova');
+    }
+
+    // MATRICULA BAIRRO = APARECIDA --------------------------------------------------------
+    public function matricula_bairro_cidade_nova_create(Request $request)
+    {
+        $data = $request->all();
+        $data['password'] = bcrypt($request->password);
+        $user = User::create($data);
+        return redirect('/index');
+    }
+
 
     // ALUNOS - MENSALIDADE ---------------------------------------------
     public function formulario_mensalidade () {

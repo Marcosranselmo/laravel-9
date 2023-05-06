@@ -6,19 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matrícula Bairro Aparecida</title>
 
-    <link rel="icon" type="image/x-icon" href="imgicon/favicon-estudandomusica.png">
     <link rel="stylesheet" type="text/css" href="css/matricula-b-a.css">
+
+    <link rel="icon" type="image/x-icon" href="imgicon/favicon-estudandomusica.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
 <style>
     .error {
-        color: red;
+        color: red; 
     }
 </style>
 
 </head>
 
-<body class="mx-auto">
+<body class="mx-auto"ecated extensions installed. We recommend to review them and migrate to alternative>
         
     {{-- GRÁFICO PAGAMENTO  --}}
     <header class="d-flex justify-content-center py-1 px-0" style="background: #c2b1a1;">
@@ -79,14 +80,13 @@
                 </div>  
             @endif
         
-        
-
             <form id="formCreate" action="/matricula-bairro-aparecida-create" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-row mt-0"> 
                     <div class="col-md-12 col-sm-12">
                         {{-- <div class="alert alert-success text-center mt-2" role="alert">Tudo certo! Acesse o <b> link enviado no seu email </b> e prossiga!</div>   --}}
-                        {{-- @include('components.flash-message') --}}
+                        @include('components.flash-message')
+                        
                         <h2>Matrícula Bairro Aparecida</h2>
                     </div>
                     <div class="col-md-12 col-sm-12" style="background: white; 

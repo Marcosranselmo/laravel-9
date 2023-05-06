@@ -32,9 +32,13 @@ Route::get('/local-matricula', 'App\Http\Controllers\UserController@local_matric
 Route::get('matricula-bairro-aparecida', 'App\Http\Controllers\UserController@matricula_bairro_aparecida');
 Route::post('matricula-bairro-aparecida-create', 'App\Http\Controllers\UserController@matricula_bairro_aparecida_create');
 
+Route::get('matricula-bairro-cidade-nova', 'App\Http\Controllers\UserController@matricula_bairro_cidade_nova');
+Route::post('matricula-bairro-cidade-nova-create', 'App\Http\Controllers\UserController@matricula_bairro_cidade_nova_create');
+
+
 Route::post('/users', [UserController::class, 'store'])->name('users.store');
-Route::get('/matricula-bairro-cidade-nova', 'App\Http\Controllers\Usercontroller@matricula_bairro_cidade_nova');
-Route::post('/matricula-bairro-cidade-nova-create', 'App\Http\Controllers\UserController@matricula_bairro_cidade_nova_salva');
+// Route::get('/matricula-bairro-cidade-nova', 'App\Http\Controllers\Usercontroller@matricula_bairro_cidade_nova');
+// Route::post('/matricula-bairro-cidade-nova-create', 'App\Http\Controllers\UserController@matricula_bairro_cidade_nova_salva');
 
 
 
