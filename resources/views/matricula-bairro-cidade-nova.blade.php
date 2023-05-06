@@ -80,7 +80,7 @@
                 </div>  
             @endif
         
-            <form action="/matricula-bairro-cidade-nova-salva" method="POST">
+            <form id="formCreate" action="/matricula-bairro-cidade-nova-create" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-row mt-0"> 
                     <div class="col-md-12 col-sm-12">
