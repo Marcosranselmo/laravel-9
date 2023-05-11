@@ -62,6 +62,7 @@ services:
 
     # redis
     redis:
+        container_name: especializati-redis
         image: redis:latest
         networks:
             - laravel-9
