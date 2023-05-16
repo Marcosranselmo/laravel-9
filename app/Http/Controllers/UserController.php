@@ -22,14 +22,14 @@ class UserController extends Controller
         return view('index', compact('users'));
     }
 
-    public function show($id)
-    {
+    // public function show($id)
+    // {
        // $user = User::where('id', '=', $id)->first();
-       if (!$user = $this->model->find($id))
-           return redirect()->route('users.index'); 
+    //    if (!$user = $this->model->find($id))
+    //        return redirect()->route('users.index'); 
 
-        return view('users.show', compact('user'));
-    }
+    //     return view('users.show', compact('user'));
+    // }
 
     // CRIAR USUÁRIO #####################################################################    
     public function create()
@@ -134,5 +134,15 @@ class UserController extends Controller
     // ALUNOS - MENSALIDADE ---------------------------------------------
     public function formulario_mensalidade () {
         return view('formulario-mensalidade');
+    }
+
+    // ALUNOS - listar dados alunos ---------------------------------------------
+    public function list_alunos($id)
+    {
+       //$user = User::where('id', '=', $id)->first();
+       if ($user = User::find($id))
+       // return redirect()->route('users.index'); 
+
+        return view('/index', compact('user'));
     }
 }

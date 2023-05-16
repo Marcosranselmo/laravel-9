@@ -15,7 +15,7 @@ Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update
 Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
 Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
 Route::post('/users', [UserController::class, 'store'])->name('users.store');
-Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
+// Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
 
 
 
@@ -40,9 +40,11 @@ Route::post('/users', [UserController::class, 'store'])->name('users.store');
 // Route::get('/matricula-bairro-cidade-nova', 'App\Http\Controllers\Usercontroller@matricula_bairro_cidade_nova');
 // Route::post('/matricula-bairro-cidade-nova-create', 'App\Http\Controllers\UserController@matricula_bairro_cidade_nova_salva');
 
+Route::get('index', 'App\Http\Controllers\UserController@list_alunos');
+// Route::get('/users/{id}', [UserController::class, 'show'])->name('index');
 
 
-
+Route::get('/index', [UserController::class, 'list_alunos'])->name('index');
 
 Route::get('/', function () {
     return view('welcome');
