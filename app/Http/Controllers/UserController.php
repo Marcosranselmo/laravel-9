@@ -135,14 +135,6 @@ class UserController extends Controller
     public function formulario_mensalidade () {
         return view('formulario-mensalidade');
     }
-
-    // ALUNOS - listar dados alunos ---------------------------------------------
-    public function list_alunos($id)
-    {
-       //$user = User::where('id', '=', $id)->first();
-       if ($user = User::find($id))
-       // return redirect()->route('users.index'); 
-
-        return view('/index', compact('user'));
-    }
 }
+    // ALUNOS - listar dados alunos ---------------------------------------------
+

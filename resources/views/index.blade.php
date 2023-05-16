@@ -110,7 +110,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none mt-2 d-lg-inline text-gray-400 small">
-                                    <h6> {{ $user->firstName}}</h6>
+                                    <h6> {{ auth()->user()->firstName}}</h6>
                                 </span>
                                 
                                 {{-- <h6> Login </h6> --}}
