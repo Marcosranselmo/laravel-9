@@ -14,22 +14,19 @@ class LoginController extends Controller
     public function auth(Request $request) {
 
         $credenciais = $request->validate([
-
-            'email' => 'required', 'email',
-            'password' => 'required','password',
+            'email' => ['required', 'email'],
+            'password' => ['required'],
         ], [
-            'email.required' => 'O email é obrigatório.',
-            'email.email' => 'Digite um email válido.',
-
-            'password.required' => 'A senha é obrigatória.',
-            'password.password' => 'Senha incorreta.',
+            'email.required' => 'O Email é obrigatório.',
+            'email.email' => 'O Email não é válido.',
+            'password.required' => 'A Senha é obrigatória.',
         ]);
 
         if(Auth::attempt($credenciais)) {
             $request->session()->regenerate();
-            return redirect()->intended('dashboard');
+            return redirect()->intended('/index');
         } else {
-            return redirect()->back()->with('erro', 'email ou senha inválida.');
+            return redirect()->back()->with('erro', 'Email ou Senha inválida.');
         }
     }
 }

@@ -19,6 +19,7 @@ Route::post('/users', [UserController::class, 'store'])->name('users.store');
 
 
 
+
 Route::view('/login', 'login.form')->name('login.form');
 Route::post('/auth', [LoginController::class, 'auth'])->name('login.auth');
 

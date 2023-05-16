@@ -19,7 +19,8 @@
             {{-- @if (Session::get('lg_tentativas')<6) --}}
 
                 {{-- erros de validação --}}
-                @if($errors->any())
+
+                {{-- @if($errors->any())
                     <div class="alert alert-danger">
                         <ul class="m-0">
                             @foreach($errors->all() as $mensagem)
@@ -27,7 +28,7 @@
                             @endforeach
                         </ul>
                     </div>  
-                @endif
+                @endif --}}
                 
                 {{-- erros de login --}}
                 {{-- @if($errors->any())
@@ -43,6 +44,17 @@
                 {{-- @if($mensagem = Session::get('erro'))
                     {{ $mensagem }}
                 @endif --}}
+
+                @if($mensagem = Session::get('erro'))
+                    {{ $mensagem }}        
+                @endif      
+                
+                @if($errors->any())
+                    @foreach($errors->all() as $error)
+                        {{ $error }} <br>
+                    @endforeach
+                @endif
+
             <form action="{{ route('login.auth') }}" method="POST">
                 @csrf
                 <div class="form-row">
@@ -55,7 +67,7 @@
 
                     <div class="col-md-12">
                         <div class="form-group">
-                            <input type="email" name="email" class="form-control" placeholder="E-mail">
+                            <input  name="email" class="form-control" placeholder="E-mail">
                         </div>  
                     </div>
                     <div class="col-md-12">
@@ -69,7 +81,7 @@
                     <h6>Faça sua &nbsp;<a style="text-decoration: none;  letter-spacing: 1px;" href="local-matricula">"FAÇA SUA MATRÍCULA!"</a></h6>
                 </div>
                 <div>
-                    <button type="submit" class="btn btn-lg btn-block  mt-3 mx-auto" style="width:100%;  letter-spacing: 1px;">LOGIN</button>
+                    <button type="submit" class="btn btn-lg btn-block  mt-3 mx-auto" style="width:100%; letter-spacing: 1px;">LOGIN</button>
                 </div>
             </form>
         </div>
