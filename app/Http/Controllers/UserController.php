@@ -22,15 +22,6 @@ class UserController extends Controller
         return view('index', compact('users'));
     }
 
-    // public function show($id)
-    // {
-       // $user = User::where('id', '=', $id)->first();
-    //    if (!$user = $this->model->find($id))
-    //        return redirect()->route('users.index'); 
-
-    //     return view('users.show', compact('user'));
-    // }
-
     // CRIAR USUÁRIO #####################################################################    
     public function create()
     { 

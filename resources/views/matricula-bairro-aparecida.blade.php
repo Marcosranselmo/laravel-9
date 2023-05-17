@@ -70,7 +70,7 @@
             {{-- @include('includes.validations-form') --}}
 
             {{-- erros de validação --}}
-            @if($errors->any())
+            @if($errors->any()) 
                 <div class="alert alert-danger">
                     <ul class="m-0">
                         @foreach($errors->all() as $error)

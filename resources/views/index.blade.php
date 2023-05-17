@@ -116,18 +116,18 @@
                                 </span>
                                 
                                 {{-- <h6> Login </h6> --}}
-                                @if (Session::get('lg_foto'))
+                                @auth
                                 <img class="img-profile rounded-circle" src="{{asset('img/alunos')}}/{{ Session::get('lg_nome_foto') }}" style="width: 100%">
                                 @else
                                 <img class="img-profile rounded-circle" src="{{asset('img/user.png')}}" style="width: 100%;">
-                                @endif
+                                @endauth
                             </a>
                         
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                @if (Session::get('lg_logado'));
-                                <a class="dropdown-item" style="margin-top: -20px;" href="/dashboard/homeadmin">
+                                @auth
+                                <a class="dropdown-item" href="/dashboard/homeadmin">
                                     <i class="fas fa-light fa-chart-line fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Meu Painel
                                 </a>
@@ -136,7 +136,7 @@
                                     <i class="far fa-address-card fa-fw mr-2 text-gray-400"></i>
                                     Matrícula
                                 </a>
-                                @endif
+                                @endauth
                                 <div class="dropdown-divider"></div>
                                 @auth
                                 <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal">

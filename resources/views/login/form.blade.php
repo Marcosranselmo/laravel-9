@@ -45,13 +45,21 @@
                     {{ $mensagem }}
                 @endif --}}
 
-                @if($mensagem = Session::get('erro'))
-                    {{ $mensagem }}        
-                @endif      
+                {{-- @if($mensagem = Session::get('erro'))
+                    <div class="alert alert-danger border-0 rounded-0 mt-4">
+                        <ul class="mt-4">
+                            {{ $mensagem }}
+                        </ul>  
+                    </div>    
+                @endif       --}}
                 
                 @if($errors->any())
                     @foreach($errors->all() as $error)
-                        {{ $error }} <br>
+                    <div class="alert alert-danger m-0 border-0 rounded-0 p-0">
+                        <ul class="mx-0 my-0">
+                            <li class="mx-0 my-0">{{$error}}</li>
+                        </ul>
+                    </div>
                     @endforeach
                 @endif
 
