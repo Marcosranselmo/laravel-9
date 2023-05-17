@@ -7,12 +7,12 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    protected $model;
+    // protected $model;
 
-    public function __construct(User $user)
-    {
-        $this->model = $user;
-    }
+    // public function __construct(User $user)
+    // {
+    //     $this->model = $user;
+    // }
 
     public function index()
     {
@@ -56,23 +56,23 @@ class UserController extends Controller
     }
 
     // EDITAR USUÁRIO #####################################################################    
-    public function edit($id)
-    {
-        if (!$user = $this->model->find($id))
-           return redirect()->route('users.index');
+    // public function edit($id)
+    // {
+    //     if (!$user = $this->model->find($id))
+    //        return redirect()->route('users.index');
 
-           return view('users.edit', compact('user'));
-    }
+    //        return view('users.edit', compact('user'));
+    // }
 
     // ATUALIZAR USUÁRIO #####################################################################    
-    public function update(Request $request, $id)
-    {
-        if (!$user = $this->model->find($id))
-           return redirect()->route('users.index');
+    // public function update(Request $request, $id)
+    // {
+    //     if (!$user = $this->model->find($id))
+    //        return redirect()->route('users.index');
 
-        $data = $request->only('name', 'email');
-        if ($request->password)
-            $data['password'] = bcrypt($request->password);
+    //     $data = $request->only('name', 'email');
+    //     if ($request->password)
+    //         $data['password'] = bcrypt($request->password);
 
         // if ($request->image) {
         //     if ($user->image && Storage::exists($user->image)) {
@@ -80,21 +80,21 @@ class UserController extends Controller
         //     }
         //     $data['image'] = $request->image->store('users');
         // }
-        $user->update($data); 
+    //     $user->update($data); 
         
-        return redirect()->route('users.index');
-    }
+    //     return redirect()->route('users.index');
+    // }
 
     // DELETAR USUÁRIO ---------------------------------------------------    
-    public function delete($id)
-    {
-       if (!$user = $this->model->find($id))
-           return redirect()->route('users.index'); 
+    // public function delete($id)
+    // {
+    //    if (!$user = $this->model->find($id))
+    //        return redirect()->route('users.index'); 
 
-        $user->delete(); 
+    //     $user->delete(); 
    
-        return redirect()->route('users.index');
-    }
+    //     return redirect()->route('users.index');
+    // }
 
     // MATRICULA - LOCAL -------------------------------------------------------------------
     public function local_matricula() {

@@ -110,7 +110,9 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none mt-2 d-lg-inline text-gray-400 small">
-                                    <h6> {{ auth()->user()->firstName}}</h6>
+                                    @auth
+                                        <h6> {{ auth()->user()->firstName}}</h6>
+                                    @endauth
                                 </span>
                                 
                                 {{-- <h6> Login </h6> --}}
@@ -136,8 +138,8 @@
                                 </a>
                                 @endif
                                 <div class="dropdown-divider"></div>
-                                @if (Session::get('lg_logado'));
-                                <a class="dropdown-item" style="margin-top: -20px;" href="#" data-toggle="modal" data-target="#logoutModal">
+                                @auth
+                                <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fa fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Sair
                                 </a>
@@ -146,7 +148,7 @@
                                     <i class="fas fa-sign-in-alt fa-sm fa-fw mr-2 text-gray-600"></i>
                                     Entrar
                                 </a>
-                                @endif
+                                @endauth
                             </div>
                         </li>
                     </ul>

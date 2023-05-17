@@ -22,6 +22,9 @@ Route::post('/users', [UserController::class, 'store'])->name('users.store');
 
 Route::view('/login', 'login.form')->name('login.form');
 Route::post('/auth', [LoginController::class, 'auth'])->name('login.auth');
+Route::get('/logout', [LoginController::class, 'logout'])->name('login.logout');
+
+
 
 // Route::post('/dashboard/auth', 'App\Http\Controllers\LoginController@login.auth');
 // Route::post('/dashboard/efetua-login', 'App\Http\Controllers\panelController@efetlogin');
