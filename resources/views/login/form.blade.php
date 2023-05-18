@@ -18,50 +18,25 @@
         <div class="card-body">
             {{-- @if (Session::get('lg_tentativas')<6) --}}
 
-                {{-- erros de validação --}}
-
-                {{-- @if($errors->any())
-                    <div class="alert alert-danger">
-                        <ul class="m-0">
-                            @foreach($errors->all() as $mensagem)
-                                <li>{{$mensagem}}</li>                        
-                            @endforeach
-                        </ul>
-                    </div>  
-                @endif --}}
-                
-                {{-- erros de login --}}
-                {{-- @if($errors->any())
-                    @foreach ($errors->all() as $error)
-                        <div class="alert alert-danger">
-                            <ul class="mx-0 my-0">
-                                <li class="mx-0 my-0">{{$error}}</li>
-                            </ul>
-                        </div>        
-                    @endforeach
-                @endif --}}
-
-                {{-- @if($mensagem = Session::get('erro'))
-                    {{ $mensagem }}
-                @endif --}}
-
-                {{-- @if($mensagem = Session::get('erro'))
-                    <div class="alert alert-danger border-0 rounded-0 mt-4">
-                        <ul class="mt-4">
-                            {{ $mensagem }}
-                        </ul>  
-                    </div>    
-                @endif       --}}
-                
-                @if($errors->any())
-                    @foreach($errors->all() as $error)
-                    <div class="alert alert-danger m-0 border-0 rounded-0 p-0">
-                        <ul class="mx-0 my-0">
-                            <li class="mx-0 my-0">{{$error}}</li>
-                        </ul>
-                    </div>
-                    @endforeach
-                @endif
+            {{-- erros de validação --}}
+            @if($mensagem = Session::get('erro'))
+            <div class="alert alert-danger">
+                <ul class="m-0">
+                        <li>{{ $mensagem }}</li>
+                    </ul>  
+                </div>    
+            @endif      
+            
+            {{-- erros de login --}}
+            @if($errors->any())
+                <div class="alert alert-danger">
+                    <ul class="m-0">
+                        @foreach($errors->all() as $error)
+                            <li>{{$error}}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
             <form action="{{ route('login.auth') }}" method="POST">
                 @csrf
