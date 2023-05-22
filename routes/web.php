@@ -5,6 +5,7 @@ use App\Http\Controllers\{
 };
 use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\LoginController;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\Route;
 
@@ -24,12 +25,6 @@ Route::view('/login', 'login.form')->name('login.form');
 Route::post('/auth', [LoginController::class, 'auth'])->name('login.auth');
 Route::get('/logout', [LoginController::class, 'logout'])->name('login.logout');
 
-
-
-// Route::post('/dashboard/auth', 'App\Http\Controllers\LoginController@login.auth');
-// Route::post('/dashboard/efetua-login', 'App\Http\Controllers\panelController@efetlogin');
-// Route::get('/dashboard/homeadmin', 'App\Http\Controllers\panelController@homeadmin');
-
 // #####  INSCRIÇÃO NOVO ALUNO  #####
 Route::get('/local-matricula', 'App\Http\Controllers\UserController@local_matricula');
 
@@ -39,15 +34,13 @@ Route::post('matricula-bairro-aparecida-create', 'App\Http\Controllers\UserContr
 Route::get('matricula-bairro-cidade-nova', 'App\Http\Controllers\UserController@matricula_bairro_cidade_nova');
 Route::post('matricula-bairro-cidade-nova-create', 'App\Http\Controllers\UserController@matricula_bairro_cidade_nova_create');
 
+Route::get('/dashboard', 'App\Http\Controllers\UserController@login.form');
+Route::post('/dashboard/login', 'App\Http\Controllers\UserController@login');
+Route::get('/dashboard/homeadmin', 'App\Http\Controllers\UserController@homeadmin');
+
+
+
 Route::post('/users', [UserController::class, 'store'])->name('users.store');
-// Route::get('/matricula-bairro-cidade-nova', 'App\Http\Controllers\Usercontroller@matricula_bairro_cidade_nova');
-// Route::post('/matricula-bairro-cidade-nova-create', 'App\Http\Controllers\UserController@matricula_bairro_cidade_nova_salva');
-
-// Route::get('index', 'App\Http\Controllers\UserController@list_alunos');
-// Route::get('/users/{id}', [UserController::class, 'show'])->name('index');
-
-
-// Route::get('/index', [UserController::class, 'list_alunos'])->name('index');
 
 Route::get('/', function () {
     return view('welcome');

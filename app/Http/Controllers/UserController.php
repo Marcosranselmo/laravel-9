@@ -5,14 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
+
 class UserController extends Controller
 {
-    // protected $model;
-
-    // public function __construct(User $user)
-    // {
-    //     $this->model = $user;
-    // }
 
     public function index()
     {
@@ -45,47 +41,6 @@ class UserController extends Controller
         // return redirect()->route('users.show', $user);
         return redirect()->route('users.index');
     }
-
-    // EDITAR USUÁRIO #####################################################################    
-    // public function edit($id)
-    // {
-    //     if (!$user = $this->model->find($id))
-    //        return redirect()->route('users.index');
-
-    //        return view('users.edit', compact('user'));
-    // }
-
-    // ATUALIZAR USUÁRIO #####################################################################    
-    // public function update(Request $request, $id)
-    // {
-    //     if (!$user = $this->model->find($id))
-    //        return redirect()->route('users.index');
-
-    //     $data = $request->only('name', 'email');
-    //     if ($request->password)
-    //         $data['password'] = bcrypt($request->password);
-
-        // if ($request->image) {
-        //     if ($user->image && Storage::exists($user->image)) {
-        //         Storage::delete($user->image);
-        //     }
-        //     $data['image'] = $request->image->store('users');
-        // }
-    //     $user->update($data); 
-        
-    //     return redirect()->route('users.index');
-    // }
-
-    // DELETAR USUÁRIO ---------------------------------------------------    
-    // public function delete($id)
-    // {
-    //    if (!$user = $this->model->find($id))
-    //        return redirect()->route('users.index'); 
-
-    //     $user->delete(); 
-   
-    //     return redirect()->route('users.index');
-    // }
 
     // MATRICULA - LOCAL -------------------------------------------------------------------
     public function local_matricula() {
@@ -121,11 +76,23 @@ class UserController extends Controller
         return redirect('/index');
     }
 
-
     // ALUNOS - MENSALIDADE ---------------------------------------------
     public function formulario_mensalidade () {
         return view('formulario-mensalidade');
     }
-}
-    // ALUNOS - listar dados alunos ---------------------------------------------
 
+    // criar a sessão (se login ok)
+    public function homeadmin() {  
+        if(Auth::check()) {
+            return redirect('/dashboard/homeadmin');
+        } else {
+
+            // $user = User::find(Auth::get('lg_id'));
+            // $user = user::find(1);
+            // return view('admin.homeadmin');
+
+
+            return view('login.form');
+        }
+    }
+}
