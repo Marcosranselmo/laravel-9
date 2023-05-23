@@ -80,8 +80,7 @@
                                     ALERTAS
                                 </h6>
                                 @if (Session::get('lg_permissao09'))
-                                    @foreach ($user->unreadNotifications as $notification)
-                                    {{-- @foreach (Session::get('lg_logado')->user->unreadNotifications as $notification) --}}
+                                    @foreach (auth::User->unreadNotifications as $notification)
                                         <div class="d-flex flex-row align-items-center mt-2">
                                             <div class="col-1 mt-1 mb-1">
                                                 <div class="icon-circle bg-warning" style="width: 24px; height: 24px;">

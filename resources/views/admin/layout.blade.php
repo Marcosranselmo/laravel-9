@@ -228,7 +228,7 @@
                                             </div>
                                         </div> --}}
                                         <div class="dropdown-divider"></div>
-                                    @endforeach
+                                    {{-- @endforeach --}}
                                 @endif
       
                                 <a class="dropdown-item text-center small text-gray-500" style="margin-top: -10px;">Total de Alertas</a>
@@ -244,7 +244,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none mt-2 d-lg-inline text-gray-600 small">
-                                <h6> {{ auth()->user()->firstName}}</h6>
+                                {{-- <h6> {{ auth()->user()->firstName}}</h6> --}}
                                 {{-- <h6> Login </h6> --}}
                                 </span>
                                 @if (Session::get('lg_foto'))

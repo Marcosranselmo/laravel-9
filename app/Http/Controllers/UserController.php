@@ -81,18 +81,13 @@ class UserController extends Controller
         return view('formulario-mensalidade');
     }
 
-    // criar a sessão (se login ok)
-    public function homeadmin() {  
-        if(Auth::check()) {
-            return redirect('/dashboard/homeadmin');
+    // DASHBOARD
+    public function homeadmin(Request $request) {  
+        if(Auth::User()) {
+            $users = User::get();
+            return view('admin.homeadmin', compact('users'));
         } else {
-
-            // $user = User::find(Auth::get('lg_id'));
-            // $user = user::find(1);
-            // return view('admin.homeadmin');
-
-
-            return view('login.form');
+            return redirect('/login');
         }
     }
 }

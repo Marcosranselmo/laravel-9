@@ -22,6 +22,7 @@ Route::post('/users', [UserController::class, 'store'])->name('users.store');
 
 
 Route::view('/login', 'login.form')->name('login.form');
+// Route::get('/login', 'App\Http\Controllers\LoginController@login_form');
 Route::post('/auth', [LoginController::class, 'auth'])->name('login.auth');
 Route::get('/logout', [LoginController::class, 'logout'])->name('login.logout');
 
@@ -34,10 +35,9 @@ Route::post('matricula-bairro-aparecida-create', 'App\Http\Controllers\UserContr
 Route::get('matricula-bairro-cidade-nova', 'App\Http\Controllers\UserController@matricula_bairro_cidade_nova');
 Route::post('matricula-bairro-cidade-nova-create', 'App\Http\Controllers\UserController@matricula_bairro_cidade_nova_create');
 
-Route::get('/dashboard', 'App\Http\Controllers\UserController@login.form');
-Route::post('/dashboard/login', 'App\Http\Controllers\UserController@login');
+Route::get('/dashboard', 'App\Http\Controllers\LoginController@login');
+Route::post('/dashboard/auth', 'App\Http\Controllers\LoginController@auth');
 Route::get('/dashboard/homeadmin', 'App\Http\Controllers\UserController@homeadmin');
-
 
 
 Route::post('/users', [UserController::class, 'store'])->name('users.store');

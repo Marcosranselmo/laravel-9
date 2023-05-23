@@ -22,7 +22,7 @@
             <div class="card-body col-xl-12 col-lg-12 col-md-12 col-sm-12" style="padding: 0;">
               <div class="table-responsive">
                 <div class="card-body">
-                  <h6> Seja Bem Vindo(a) {{ auth()->user()->firstName}}!</h6>
+                  {{-- <h6> Seja Bem Vindo(a) {{ auth()->user()->firstName}}!</h6> --}}
 
                   <div class="alert alert-danger" role="alert">
                     Favor adicionar sua <b> foto de perfil!. </b> Para isso, no menu ao lado clique em <b> Meus Dados </b>
