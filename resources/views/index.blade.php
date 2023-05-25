@@ -110,16 +110,16 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none mt-2 d-lg-inline text-gray-400 small">
                                     @auth
-                                        <h6> {{ auth()->user()->firstName}}</h6>
+                                        <h6>{{ auth()->user()->firstName}}</h6>
                                     @endauth
                                 </span>
                                 
                                 {{-- <h6> Login </h6> --}}
-                                @auth
+                                @if (Session::get('lg_foto'))
                                 <img class="img-profile rounded-circle" src="{{asset('img/alunos')}}/{{ Session::get('lg_nome_foto') }}" style="width: 100%">
                                 @else
                                 <img class="img-profile rounded-circle" src="{{asset('img/user.png')}}" style="width: 100%;">
-                                @endauth
+                                @endif
                             </a>
                         
                             <!-- Dropdown - User Information -->

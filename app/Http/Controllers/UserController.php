@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -83,7 +84,7 @@ class UserController extends Controller
 
     // DASHBOARD
     public function homeadmin(Request $request) {  
-        if(Auth::User()) {
+        if(Auth::User() && !Session::get('lg_permissao08')) {
             $users = User::get();
             return view('admin.homeadmin', compact('users'));
         } else {

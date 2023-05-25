@@ -51,7 +51,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="/">
+                <a class="nav-link" href="/index">
                     <i class="fas fa-warehouse"></i>
                     <span class="">Home</span></a>
             </li>
@@ -74,7 +74,7 @@
                 Interface
             </div> --}}
 
-            @if (Session::get('lg_permissao08'))
+            @auth (Session::get('lg_permissao08'))
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
@@ -88,44 +88,44 @@
                         <a class="collapse-item" href="grafico-financeiro">Financeiro</a>
                     </div>
                 </div>
-            </li>
-            @endif
+            </li>   
+            @endauth
 
             <!-- Divider -->
             <hr class="sidebar-divider mb-0">
 
-            @if (Session::get('lg_permissao09'))
+            @auth (Session::get('lg_permissao09'))
             <!-- Nav Item - Meus Dados -->
             <li class="nav-item">
                 <a class="nav-link" href="p-alunos-profile">
                     <i class="fa fa-list"></i>
                     <span>Meus Dados</span></a>
             </li>
-            @endif
+            @endauth
 
             <!-- Divider -->
             <hr class="sidebar-divider mb-0">
 
-            @if (Session::get('lg_permissao09'))
+            @auth (Session::get('lg_permissao09'))
             <!-- Nav Item - Meus Dados -->
             <li class="nav-item">
             <a class="nav-link" href="p-pagamento">
                 <i class="fas fa-hand-holding-usd"></i>
                 <span>Meus Pagamentos</span></a>
             </li>
-            @endif
+            @endauth
 
             <!-- Divider -->
             <hr class="sidebar-divider mb-0">
 
-            @if (Session::get('lg_permissao08'))
+            @auth (Session::get('lg_permissao08'))
             <li class="nav-item">
                 <a class="nav-link" href="p-frequencia-aulas">
                     <i class="fas fa-chalkboard-teacher"></i>
                     <span>Frequencia Aulas</span>
                 </a>
             </li>
-            @endif
+            @endauth
 
             <!-- Divider -->
             <hr class="sidebar-divider mb-3">
@@ -135,7 +135,7 @@
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
 
-            @if (Session::get('lg_permissao10'))
+            @auth (Session::get('lg_permissao10'))
 
             <!-- Divider -->
             <hr class="sidebar-divider mb-0">
@@ -157,19 +157,19 @@
                     <span>Lista Alunos</span>
                 </a>
             </li>
-            @endif
+            @endauth
 
             <!-- Divider -->
             <hr class="sidebar-divider mb-0">
 
-            @if (Session::get('lg_permissao10'))
+            @auth (Session::get('lg_permissao10'))
             <li class="nav-item mb-0">
                 <a class="nav-link" href="p-frequencia-total-aulas">
                     <i class="fas fa-chalkboard-teacher"></i>
                     <span>Frequencia Total Aulas</span>
                 </a>
             </li>
-            @endif
+            @endauth
 
 
         </ul>
@@ -197,11 +197,11 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-bell fa-fw" style="font-size: 18px;"></i>
                                 <!-- Counter - Alerts -->
-                                @if (Session::get('lg_permissao01'))
+                                @auth (Session::get('lg_permissao01'))
                                     <span class="badge badge-danger badge-counter" style="font-size: 14px;">
                                         {{-- {{ $user->unreadNotifications->count() }} --}}
                                     </span>
-                                @endif
+                                @endauth
                             </a>
                             <!-- Dropdown - Alerts -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -209,10 +209,10 @@
                                 <h6 class="dropdown-header" style="letter-spacing: 1px; font-size: 12px; font-weight: 400;">
                                     ALERTAS
                                 </h6>
-                                @if (Session::get('lg_permissao01'))
-                                    {{-- @foreach ($user->unreadNotifications as $notification) --}}
-                                    {{-- @foreach (Session::get('lg_logado')->user->unreadNotifications as $notification) --}}
-                                        {{-- <div class="d-flex flex-row align-items-center mt-2">
+                                {{-- @auth (Session::get('lg_permissao01'))
+                                    @foreach ($user->unreadNotifications as $notification)
+                                    @foreach (Session::get('lg_logado')->user->unreadNotifications as $notification)
+                                        <div class="d-flex flex-row align-items-center mt-2">
                                             <div class="col-1 mt-1 mb-1">
                                                 <div class="icon-circle bg-warning" style="width: 24px; height: 24px;">
                                                     <i class="fas fa-exclamation-triangle text-white" style=""></i>
@@ -226,10 +226,10 @@
                                                 href="{{ route('markasred', 
                                                 $notification->id) }}">Excluir</a>  
                                             </div>
-                                        </div> --}}
+                                        </div>
                                         <div class="dropdown-divider"></div>
-                                    {{-- @endforeach --}}
-                                @endif
+                                    @endforeach
+                                @endauth --}}
       
                                 <a class="dropdown-item text-center small text-gray-500" style="margin-top: -10px;">Total de Alertas</a>
                             </div>
@@ -244,7 +244,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none mt-2 d-lg-inline text-gray-600 small">
-                                {{-- <h6> {{ auth()->user()->firstName}}</h6> --}}
+                                <h6>{{ auth()->user()->firstName}}</h6>
                                 {{-- <h6> Login </h6> --}}
                                 </span>
                                 @if (Session::get('lg_foto'))
@@ -256,7 +256,7 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="/">
+                                <a class="dropdown-item" href="/index">
                                     <i class="fas fa-home text-gray-400"></i>
                                     Home
                                 </a>
