@@ -43,6 +43,7 @@ Route::get('/dashboard/homeadmin', 'App\Http\Controllers\UserController@homeadmi
 Route::get('/dashboard/grafico-aulas', 'App\Http\Controllers\UserController@grafico_aulas');
 Route::get('/dashboard/grafico-financeiro', 'App\Http\Controllers\UserController@grafico_financeiro');
 
+Route::get('/dashboard/p-alunos', 'App\Http\Controllers\UserController@list_alunos');
 
 Route::post('/users', [UserController::class, 'store'])->name('users.store');
 

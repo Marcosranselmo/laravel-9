@@ -10,25 +10,22 @@ use Illuminate\Support\Facades\frequenciaaulas;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
+use App\Http\Controllers\Mensalidade;
+
 class UserController extends Controller
 {
 
-    public function index()
-    {
-
+    public function index() {
         $users = User::get();
-      
         return view('index', compact('users'));
     }
 
-    // CRIAR USUÁRIO #####################################################################    
-    public function create()
-    { 
+    // CRIAR USUÁRIO ----------------------------------------------------------------------    
+    public function create() { 
         return view('users.create');
     }
 
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         $data = $request->all();
         $data['password'] = bcrypt($request->password);
 
@@ -50,14 +47,13 @@ class UserController extends Controller
         return view('local-matricula');
     }
 
-    // VIEW BAIRRO = APARECIDA --------------------------------------------------------
+    // VIEW BAIRRO = APARECIDA -------------------------------------------------------------
     public function matricula_bairro_aparecida () {
         return view('/matricula-bairro-aparecida');
     }
 
     // MATRICULA BAIRRO = APARECIDA --------------------------------------------------------
-    public function matricula_bairro_aparecida_create(Request $request)
-    {
+    public function matricula_bairro_aparecida_create(Request $request) {
         $data = $request->all();
         $data['password'] = bcrypt($request->password);
         $user = User::create($data);
@@ -71,8 +67,7 @@ class UserController extends Controller
     }
 
     // MATRICULA BAIRRO = APARECIDA --------------------------------------------------------
-    public function matricula_bairro_cidade_nova_create(Request $request)
-    {
+    public function matricula_bairro_cidade_nova_create(Request $request) {
         $data = $request->all();
         $data['password'] = bcrypt($request->password);
         $user = User::create($data);
@@ -97,7 +92,7 @@ class UserController extends Controller
     // GRÁFICO - AULAS
     public function grafico_aulas() {
         if(Auth::User() && !Session::get('lg_permissao01')) {
-            $user = user::find(Session::get('lg_id'));
+            $user = User::find(Session::get('lg_id'));
             // $frequenciaaulas = DB::table('frequenciaaulas')->select('diaDaSemana');
             $frequenciaaulas = DB::table('frequenciaaulas')->select('presente');
             $total_presente = $frequenciaaulas->sum('presente');
@@ -109,9 +104,8 @@ class UserController extends Controller
                 DB::raw('DAY(created_at) as dia'),
                 DB::raw('COUNT(*) as total')
             ])
-            // ->groupBy('dia')
             ->groupBy('dia')
-            ->get();
+            ->get('total');
 
             // preparar arrays
             foreach($usersData as $frequenciaaulas) {
@@ -120,13 +114,87 @@ class UserController extends Controller
             } 
 
             // formatar para chartjs
-           $userLabel = "'Comparativo presença aluno'";
-           $userDia =  implode(',', $dia);
-           $userTotal = implode(',', $total);
+            $userLabel = "'Comparativo presença aluno'";
+            $userDia =  implode(',', $dia);
+            $userTotal = implode(',', $total);
                 
 
             return view('/admin/grafico-aulas',compact('user','frequenciaaulas',
             'total_presente','total_ausente','userLabel','userDia','userTotal'));
+        } else {
+            return redirect('/dashboard');
+        }
+    }
+
+    // MENSALIDADE - GRÁFICO FINANCEIRO
+    public function grafico_financeiro() {
+        if(Auth::User() && !Session::get('lg_permissao01')) {
+            $user = user::find(Session::get('lg_id'));
+            // $dados = DB::table('alunos')->where('alunos.id', '!=', Session::get('lg_id'))->orderBy('firstName','asc')->paginate(10);
+            
+            // VALOR MENSALIDADE
+            $mensalidade = DB::table('mensalidade')->select('valorMensal');
+            $total_mensalidade = $mensalidade->sum('valorMensal');
+
+            // DATA VENCIMENTO
+            $mensalidade = DB::table('mensalidade')->select('dataVencimento');
+            $data_vencimento = $mensalidade->sum('dataVencimento');
+
+            // PARCELAS TOTAL PAGAS
+            $mensalidade = DB::table('mensalidade')->select('valorPag');
+            $total_pago = $mensalidade->sum('valorpag');
+
+            // PARCELAS EM ATRASO
+            $mensalidade = DB::table('mensalidade')->select('parcelasEmAtraso');
+            $parcelas_atrasadas = $mensalidade->sum('parcelasEmAtraso');
+            
+            // GRÁFICO 2 DATA DOS PAGAMENTOS
+            // $datData = Mensalidade::all();
+
+            // foreach($datData as $dat) {
+            //     $datmesRef[] = "'".$dat->mesRef."'";
+            //     $datTotal[] = alunos::where('id_mensalidade', $dat->id)->count();
+            // }
+
+            // FORMATAR PARA CHARTJS
+            // $datLabel = implode(',', $datmesRef);
+            // $datTotal = implode(',', $datTotal);
+
+            // gráfico 1 - Presença
+            $usersData = mensalidade::select([
+                DB::raw('DAY(created_at) as dia'),
+                DB::raw('COUNT(*) as total')
+            ])
+            // ->groupBy('dia')
+            ->groupBy('dia')
+            ->get();
+
+            // preparar arrays
+            foreach($usersData as $mensalidade) {
+                $dia[] = $mensalidade->dia;
+                $total[] = $mensalidade->total;
+            } 
+
+            // formatar para chartjs
+            $userLabel = "'Comparativo mensalidade'";
+            $userDia =  implode(',', $dia);
+            $userTotal = implode(',', $total);
+
+            return view('/admin/grafico-financeiro',compact('user','mensalidade','total_mensalidade',
+            'data_vencimento','total_pago','parcelas_atrasadas','userLabel','userDia','userTotal'));
+            } else {
+            return redirect('/dashboard');
+        }
+    }
+
+    // ALUNOS - LISTA
+    public function list_alunos() {
+        if(Auth::User() && !Session::get('lg_permissao08')) {
+            $users = User::get();
+            // $user = user::find(Session::get('lg_id'));
+            // $user = DB::table('users')->where('user.id', '!=',  
+            // Session::get('lg_id'))->orderBy('firstName','asc')->paginate(15);
+            return view('/admin/p-list-alunos',compact('users'));
         } else {
             return redirect('/dashboard');
         }
