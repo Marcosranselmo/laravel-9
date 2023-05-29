@@ -94,33 +94,37 @@ class UserController extends Controller
         if(Auth::User() && !Session::get('lg_permissao01')) {
             $user = User::find(Session::get('lg_id'));
             // $frequenciaaulas = DB::table('frequenciaaulas')->select('diaDaSemana');
-            $frequenciaaulas = DB::table('frequenciaaulas')->select('presente');
-            $total_presente = $frequenciaaulas->sum('presente');
-            $frequenciaaulas = DB::table('frequenciaaulas')->select('ausente');
-            $total_ausente = $frequenciaaulas->sum('ausente');
+
+            // $frequenciaaulas = DB::table('frequenciaaulas')->select('presente');
+            // $total_presente = $frequenciaaulas->sum('presente');
+            // $frequenciaaulas = DB::table('frequenciaaulas')->select('ausente');
+            // $total_ausente = $frequenciaaulas->sum('ausente');
+
+            $usuarios = User::all()->count();
 
             // gráfico 1 - Presença
-            $usersData = frequenciaaulas::select([
-                DB::raw('DAY(created_at) as dia'),
-                DB::raw('COUNT(*) as total')
-            ])
-            ->groupBy('dia')
-            ->get('total');
+            // $usersData = frequenciaaulas::select([
+            //     DB::raw('DAY(created_at) as dia'),
+            //     DB::raw('COUNT(*) as total')
+            // ])
+            // ->groupBy('dia')
+            // ->get('total');
 
             // preparar arrays
-            foreach($usersData as $frequenciaaulas) {
-                $dia[] = $frequenciaaulas->dia;
-                $total[] = $frequenciaaulas->total;
-            } 
+            // foreach($usersData as $frequenciaaulas) {
+            //     $dia[] = $frequenciaaulas->dia;
+            //     $total[] = $frequenciaaulas->total;
+            // } 
 
             // formatar para chartjs
-            $userLabel = "'Comparativo presença aluno'";
-            $userDia =  implode(',', $dia);
-            $userTotal = implode(',', $total);
+            // $userLabel = "'Comparativo presença aluno'";
+            // $userDia =  implode(',', $dia);
+            // $userTotal = implode(',', $total);
                 
+            return view('/admin/grafico-aulas',compact('usuarios'));
 
-            return view('/admin/grafico-aulas',compact('user','frequenciaaulas',
-            'total_presente','total_ausente','userLabel','userDia','userTotal'));
+            // return view('/admin/grafico-aulas',compact('user','frequenciaaulas',
+            // 'total_presente','total_ausente','userLabel','userDia','userTotal'));
         } else {
             return redirect('/dashboard');
         }
@@ -161,32 +165,32 @@ class UserController extends Controller
             // $datTotal = implode(',', $datTotal);
 
             // gráfico 1 - Presença
-            $usersData = mensalidade::select([
-                DB::raw('DAY(created_at) as dia'),
-                DB::raw('COUNT(*) as total')
-            ])
+            // $usersData = mensalidade::select([
+            //     DB::raw('DAY(created_at) as dia'),
+            //     DB::raw('COUNT(*) as total')
+            // ])
             // ->groupBy('dia')
-            ->groupBy('dia')
-            ->get();
+            // ->groupBy('dia')
+            // ->get();
 
             // preparar arrays
-            foreach($usersData as $mensalidade) {
-                $dia[] = $mensalidade->dia;
-                $total[] = $mensalidade->total;
-            } 
+            // foreach($usersData as $mensalidade) {
+            //     $dia[] = $mensalidade->dia;
+            //     $total[] = $mensalidade->total;
+            // } 
 
             // formatar para chartjs
-            $userLabel = "'Comparativo mensalidade'";
-            $userDia =  implode(',', $dia);
-            $userTotal = implode(',', $total);
+        //     $userLabel = "'Comparativo mensalidade'";
+        //     $userDia =  implode(',', $dia);
+        //     $userTotal = implode(',', $total);
 
-            return view('/admin/grafico-financeiro',compact('user','mensalidade','total_mensalidade',
-            'data_vencimento','total_pago','parcelas_atrasadas','userLabel','userDia','userTotal'));
-            } else {
-            return redirect('/dashboard');
-        }
+        //     return view('/admin/grafico-financeiro',compact('user','mensalidade','total_mensalidade',
+        //     'data_vencimento','total_pago','parcelas_atrasadas','userLabel','userDia','userTotal'));
+        //     } else {
+        //     return redirect('/dashboard');
+        // }
     }
-
+    }
     // ALUNOS - LISTA
     public function list_alunos() {
         if(Auth::User() && !Session::get('lg_permissao08')) {
