@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\frequenciaaulas;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
-use App\Http\Controllers\Mensalidade;
+use App\Models\User;
+use App\Models\frequenciaaulas;
+use App\Models\Mensalidade;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -93,38 +94,41 @@ class UserController extends Controller
     public function grafico_aulas() {
         if(Auth::User() && !Session::get('lg_permissao01')) {
             $user = User::find(Session::get('lg_id'));
+            
+            $frequenciaaulas = DB::table('frequenciaaulas')->select('diaDaSemana');
+            $total_diaDaSemana = $frequenciaaulas->sum('diaDaSemana');
+
+            $frequenciaaulas = DB::table('frequenciaaulas')->select('presente');
+            $total_presente = $frequenciaaulas->sum('presente');
+            $frequenciaaulas = DB::table('frequenciaaulas')->select('ausente');
+            $total_ausente = $frequenciaaulas->sum('ausente');
+
             // $frequenciaaulas = DB::table('frequenciaaulas')->select('diaDaSemana');
-
-            // $frequenciaaulas = DB::table('frequenciaaulas')->select('presente');
-            // $total_presente = $frequenciaaulas->sum('presente');
-            // $frequenciaaulas = DB::table('frequenciaaulas')->select('ausente');
-            // $total_ausente = $frequenciaaulas->sum('ausente');
-
-            $usuarios = User::all()->count();
-
+            // $diaDaSemana = $frequenciaaulas->sum('diaDaSemana');
+  
             // gráfico 1 - Presença
-            // $usersData = frequenciaaulas::select([
-            //     DB::raw('DAY(created_at) as dia'),
-            //     DB::raw('COUNT(*) as total')
-            // ])
+            $usersData = frequenciaaulas::select([
+                DB::raw('DAY(created_at) as dia'),
+                DB::raw('COUNT(*) as total')
+            ])
             // ->groupBy('dia')
-            // ->get('total');
-
+            ->groupBy('dia')
+            ->get();
+ 
             // preparar arrays
-            // foreach($usersData as $frequenciaaulas) {
-            //     $dia[] = $frequenciaaulas->dia;
-            //     $total[] = $frequenciaaulas->total;
-            // } 
-
+            foreach($usersData as $frequenciaaulas) {
+                $dia[] = $frequenciaaulas->dia;
+                $total[] = $frequenciaaulas->total;
+            } 
+ 
             // formatar para chartjs
-            // $userLabel = "'Comparativo presença aluno'";
-            // $userDia =  implode(',', $dia);
-            // $userTotal = implode(',', $total);
-                
-            return view('/admin/grafico-aulas',compact('usuarios'));
-
-            // return view('/admin/grafico-aulas',compact('user','frequenciaaulas',
-            // 'total_presente','total_ausente','userLabel','userDia','userTotal'));
+            $userLabel = "'Comparativo presença aluno'";
+            $userDia =  implode(',', $dia);
+            $userTotal = implode(',', $total);
+                 
+ 
+            return view('/admin/grafico-aulas',compact('user','frequenciaaulas',
+            'total_presente','total_ausente','userLabel','userDia','userTotal'));
         } else {
             return redirect('/dashboard');
         }

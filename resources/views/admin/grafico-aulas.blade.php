@@ -26,7 +26,7 @@
                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                     Presença: </div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                    <h6>{{ $usuarios }}</h6>
+                                    <h6>{{ $total_presente }}</h6>
                                 </div>
                             </div>
                             <div class="col-auto">
@@ -46,7 +46,7 @@
                                 <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                                     Ausencia</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                    {{-- <h6>{{ $total_ausente }}</h6> --}}
+                                    <h6>{{ $total_ausente }}</h6>
                                 </div>
                             </div>
                             <div class="col-auto">
@@ -133,5 +133,43 @@
 @endsection
 
 @push('graficos')
+
+    <script>
+        /* Gráfico 01 */
+        var ctx = document.getElementById('myChart');
+        var myChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: [{{ $userDia }}],
+                datasets: [{
+                    label: [{!! $userLabel !!}],
+                    data: [{{ $userTotal }}],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',                         
+                        'rgba(255, 159, 64, 1)'
+                    ]
+            //         borderColor: [
+            //             'rgba(255, 99, 132, 1)',
+            //             'rgba(54, 162, 235, 1)',
+            //             'rgba(255, 206, 86, 1)',                     
+            //             'rgba(255, 159, 64, 1)'
+            //         ],
+            //     borderWidth: 1, 
+            //     }]
+            // },
+            // options: {
+            //     scales: {
+            //         yAxes: [{
+            //             ticks: {
+            //                 beginAtZero: true
+            //             }
+                    }]
+                // }
+            }
+        });
+
+    </script>
 
 @endpush
