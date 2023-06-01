@@ -96,8 +96,8 @@ class UserController extends Controller
         if(Auth::User() && !Session::get('lg_permissao01')) {
             $user = User::find(Session::get('lg_id'));
             
-            $frequenciaaulas = DB::table('frequenciaaulas')->select('diaDaSemana');
-            $total_diaDaSemana = $frequenciaaulas->sum('diaDaSemana');
+            // $frequenciaaulas = DB::table('frequenciaaulas')->select('diaDaSemana');
+            // $total_diaDaSemana = $frequenciaaulas->sum('diaDaSemana');
 
             $frequenciaaulas = DB::table('frequenciaaulas')->select('presente');
             $total_presente = $frequenciaaulas->sum('presente');
@@ -112,9 +112,11 @@ class UserController extends Controller
                 DB::raw('DAY(created_at) as dia'),
                 DB::raw('COUNT(*) as total')
             ])
-            // ->groupBy('dia')
             ->groupBy('dia')
+            ->orderBy('dia', 'asc')
             ->get();
+
+            // dd($usersData)
  
             // preparar arrays
             foreach($usersData as $frequenciaaulas) {
@@ -216,9 +218,18 @@ class UserController extends Controller
 
     // INSERIR PAGAMENTO ALUNOS --------------------------------------------------------
     public function pagamento_aluno_inserir(Request $request) {
-        $data = $request->all();
-        // $data['password'] = bcrypt($request->password);
-        $User = frequenciaaulas::create($data);
+        $data = $request->only(
+
+            'firstName',
+            'lastName',
+            'diaDaSemana',
+            'dataAula',   
+            'Presente', 
+            'Ausente',
+        );
+
+        frequenciaaulas::create($data);
+
 
         return redirect('/index');
     }

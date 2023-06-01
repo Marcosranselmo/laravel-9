@@ -64,7 +64,7 @@
                         <h6 class="m-0 font-weight-bold text-primary">Dia da semana:</h6>
                     </div>
                     <div class="card-body">
-                        <div class="line">
+                        <div class="pie">
                             <canvas id="myChart"></canvas>
                         </div>
                     </div>

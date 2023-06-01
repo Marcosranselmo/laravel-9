@@ -25,8 +25,8 @@ return new class extends Migration
            
             $table->string('imagem')->nullable();
 
-            $table->unsignedBigInteger('id_users');
-            $table->foreign('id_users')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('id_user');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             
             // $table->unsignedBigInteger('id_meses');
             // $table->foreign('id_meses')->references('id')->on('meses')->onDelete('cascade')->onUpdate('cascade');

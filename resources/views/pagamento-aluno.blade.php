@@ -111,15 +111,15 @@
                         </div>
                         <div class="form-group col-md-4 col-sm-6">
                             <label class="mb-0">dataAula</label>
-                            <input type="text" name="dataAula" id="dataAula" class="form-control" placeholder="Dia da aula">
+                            <input type="text" name="dataAula" id="dataAula" class="form-control .date" placeholder="Dia da aula">
                         </div>
                         <div class="form-group col-md-2 col-sm-2">
                             <label class="mb-0">Presente</label>
-                            <input type="text" class="form-control mt-0" placeholder="Presente">
+                            <input type="text" name="Presente" id="Presente" class="form-control mt-0 number" placeholder="Presente">
                         </div>
                         <div class="form-group col-md-2 col-sm-2">
                             <label class="mb-0">Ausente</label>
-                            <input type="text" class="form-control mt-0 number" name="numero" id="numero" placeholder="Ausente">
+                            <input type="text" name="Ausente" id="Ausente" class="form-control mt-0 number" placeholder="Ausente">
                         </div>
                 </div>     
                 
