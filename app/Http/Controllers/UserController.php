@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Session;
 
 use App\Models\User;
 use App\Models\frequenciaaulas;
+use App\Models\FrequenciaAulas as ModelsFrequenciaAulas;
 use App\Models\Mensalidade;
 use Illuminate\Support\Facades\Storage;
 
@@ -206,5 +207,19 @@ class UserController extends Controller
         } else {
             return redirect('/dashboard');
         }
+    }
+
+    // VIEW PAGAMENTO ALUNOS -------------------------------------------------------------
+    public function pagamento_aluno () {
+        return view('/pagamento-aluno');
+    }
+
+    // INSERIR PAGAMENTO ALUNOS --------------------------------------------------------
+    public function pagamento_aluno_inserir(Request $request) {
+        $data = $request->all();
+        // $data['password'] = bcrypt($request->password);
+        $User = frequenciaaulas::create($data);
+
+        return redirect('/index');
     }
 }
