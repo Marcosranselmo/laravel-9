@@ -45,8 +45,8 @@ Route::get('/dashboard/grafico-financeiro', 'App\Http\Controllers\UserController
 
 Route::get('/dashboard/p-alunos', 'App\Http\Controllers\UserController@list_alunos');
 
-Route::get('pagamento-aluno', 'App\Http\Controllers\UserController@pagamento_aluno');
-Route::post('pagamento-aluno-inserir', 'App\Http\Controllers\UserController@pagamento_aluno_inserir');
+Route::get('inserir-presenca-aluno', 'App\Http\Controllers\UserController@presenca_aluno');
+Route::post('presenca-aluno-inserir', 'App\Http\Controllers\UserController@presenca_aluno_inserir');
 
 
 Route::post('/users', [UserController::class, 'store'])->name('users.store');

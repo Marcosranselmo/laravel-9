@@ -11,10 +11,10 @@ class frequenciaaulas extends Model
     'firstName',
     'lastName',
     'diaDaSemana',
-    'dataAula',  
-    'Presente', 
-    'Ausente',
-    'imagem',
+    'meses',
+    'presente', 
+    'ausente',
+    'date',
 ];
 
 }

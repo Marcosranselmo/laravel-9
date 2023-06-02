@@ -80,7 +80,7 @@
                 </div>  
             @endif
         
-            <form id="formCreate" action="/pagamento-aluno-inserir" method="post" enctype="multipart/form-data">
+            <form id="formCreate" action="/presenca-aluno-inserir" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-row mt-0"> 
                     <div class="col-md-12 col-sm-12">
@@ -110,8 +110,12 @@
                             <input type="text" name="diaDaSemana" id="diaDaSemana" class="form-control" placeholder="Dia da semana...">
                         </div>
                         <div class="form-group col-md-4 col-sm-6">
-                            <label class="mb-0">dataAula</label>
-                            <input type="text" name="dataAula" id="dataAula" class="form-control .date" placeholder="Dia da aula">
+                            <label class="mb-0">Mês</label>
+                            <input type="text" name="mes" id="mes" class="form-control" placeholder="Mês">
+                        </div>
+                        <div class="form-group col-md-4 col-sm-6">
+                            <label for="date" class="mb-0">Data presença</label>
+                            <input type="date" name="date" id="date" class="form-control" placeholder="Dia da aula">
                         </div>
                         <div class="form-group col-md-2 col-sm-2">
                             <label class="mb-0">Presente</label>
@@ -182,11 +186,11 @@
                     //     minlength: 1,
                     //     maxlength: 4
                     // },
-                    diaDaSemana:{
-                        required: true,
-                        minlength: 3,
-                        maxlength: 30
-                    },
+                    // diaDaSemana:{
+                    //     required: true,
+                    //     minlength: 3,
+                    //     maxlength: 30
+                    // },
                     Presente:{
                         required: true,
                         number: true,

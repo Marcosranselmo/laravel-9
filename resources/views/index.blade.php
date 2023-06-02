@@ -16,6 +16,9 @@
 
     <link rel="stylesheet" href="{{asset('panel/plugins/fontawesome-free/css/all.min.css')}}">
 
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <script src="{{asset('panel/plugins/cropper/jquery-3.6.1.js')}}"></script>
     <script src="{{asset('panel/plugins/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('panel/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>

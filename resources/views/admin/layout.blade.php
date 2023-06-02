@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="{{asset('panel/plugins/fontawesome-free/css/all.min.css')}}">
     <link href="{{asset('panel/plugins/cropper/cropper.css')}}" rel="stylesheet">  
   
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <script src="/jsGraficos/chart.js"></script>
     <script src="/jsGraficos/main.js"></script>
     @stack('graficos')
@@ -333,6 +335,8 @@
 
     <!-- Page level plugins -->
     <script src="/vendor/chart.js/Chart.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     {{-- <script src="{{asset('panel/plugins/inputmask/jquery.mask.js')}}"></script> --}}
     <script src="{{asset('panel/plugins/inputmask/jquery.mask.min.js')}}"></script>

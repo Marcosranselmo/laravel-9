@@ -19,12 +19,11 @@ return new class extends Migration
             $table->string('firstName')->nullable(true);
             $table->string('lastName')->nullable(true);
             $table->string('diaDaSemana'); 
-            $table->string('dataAula');   
-            $table->string('Presente'); 
-            $table->string('Ausente');
+            $table->string('meses'); 
+            $table->string('presente'); 
+            $table->string('ausente');
+            $table->string('date');
            
-            $table->string('imagem')->nullable();
-
             $table->unsignedBigInteger('id_user');
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             

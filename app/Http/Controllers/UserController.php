@@ -109,29 +109,29 @@ class UserController extends Controller
   
             // gráfico 1 - Presença
             $usersData = frequenciaaulas::select([
-                DB::raw('DAY(created_at) as dia'),
+                DB::raw('Date as date'),
                 DB::raw('COUNT(*) as total')
             ])
-            ->groupBy('dia')
-            ->orderBy('dia', 'asc')
+            ->groupBy('date')
+            ->orderBy('date', 'asc')
             ->get();
 
             // dd($usersData)
  
             // preparar arrays
             foreach($usersData as $frequenciaaulas) {
-                $dia[] = $frequenciaaulas->dia;
+                $date[] = $frequenciaaulas->date;
                 $total[] = $frequenciaaulas->total;
             } 
  
             // formatar para chartjs
             $userLabel = "'Comparativo presença aluno'";
-            $userDia =  implode(',', $dia);
+            $userDate =  implode(',', $date);
             $userTotal = implode(',', $total);
                  
  
             return view('/admin/grafico-aulas',compact('user','frequenciaaulas',
-            'total_presente','total_ausente','userLabel','userDia','userTotal'));
+            'total_presente','total_ausente','userLabel','userDate','userTotal'));
         } else {
             return redirect('/dashboard');
         }
@@ -211,26 +211,22 @@ class UserController extends Controller
         }
     }
 
-    // VIEW PAGAMENTO ALUNOS -------------------------------------------------------------
-    public function pagamento_aluno () {
-        return view('/pagamento-aluno');
+    // VIEW PRESENÇA ALUNOS -------------------------------------------------------------
+    public function presenca_aluno () {
+        return view('/inserir-presenca-aluno');
     }
 
-    // INSERIR PAGAMENTO ALUNOS --------------------------------------------------------
-    public function pagamento_aluno_inserir(Request $request) {
-        $data = $request->only(
+    // INSERIR PRESENÇA ALUNOS --------------------------------------------------------
+    public function presenca_aluno_inserir(Request $request) {
+        
+        $data = $request->all();
 
-            'firstName',
-            'lastName',
-            'diaDaSemana',
-            'dataAula',   
-            'Presente', 
-            'Ausente',
-        );
+        $user = frequenciaaulas::create($data);
 
         frequenciaaulas::create($data);
 
 
         return redirect('/index');
+
     }
 }
