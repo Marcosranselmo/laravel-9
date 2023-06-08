@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <ol class="breadcrumb">
-                    <span class="align-middle">FINANCEIRO: Aluno(a): {{ Session::get('lg_firstName')}}</span>
+                    <span class="align-middle">FINANCEIRO: Aluno(a): {{ auth()->user()->firstName}}</span>
                     </ol>
                 </div>
             </div>

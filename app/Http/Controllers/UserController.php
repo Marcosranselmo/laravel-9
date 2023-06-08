@@ -174,7 +174,7 @@ class UserController extends Controller
             // gráfico 1 - Presença
             $usersData = mensalidade::select([
                 DB::raw('DAY(created_at) as dia'),
-                DB::raw('COUNT(*) as total')
+                DB::raw('COUNT(*) as total')  
             ])
             ->groupBy('dia')
             ->groupBy('dia')
