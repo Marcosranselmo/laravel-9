@@ -137,7 +137,7 @@ class UserController extends Controller
         }
     }
 
-    // MENSALIDADE - GRÁFICO FINANCEIRO
+    // GRÁFICO - FINANCEIRO
     public function grafico_financeiro() {
         if(Auth::User() && !Session::get('lg_permissao01')) {
             $user = user::find(Session::get('lg_id'));
@@ -230,4 +230,23 @@ class UserController extends Controller
         return redirect('/index');
 
     }
+
+        // VIEW MENSALIDADE ALUNOS -------------------------------------------------------------
+        public function mensalidade_aluno () {
+            return view('/inserir-mensalidade-aluno');
+        }
+    
+        // INSERIR PRESENÇA ALUNOS --------------------------------------------------------
+        public function mensalidade_aluno_inserir(Request $request) {
+            
+            $data = $request->all();
+    
+            $user = mensalidade::create($data);
+    
+            mensalidade::create($data);
+    
+    
+            return redirect('/index');
+    
+        }
 }

@@ -87,7 +87,7 @@
                         {{-- <div class="alert alert-success text-center mt-2" role="alert">Tudo certo! Acesse o <b> link enviado no seu email </b> e prossiga!</div>   --}}
                         @include('components.flash-message')
                         
-                        <h2>Inserir Pagamentos Alunos</h2>
+                        <h2>Inserir Presença Alunos</h2>
                     </div>
                     <div class="col-md-12 col-sm-12" style="background: white; 
                     justify-content: center; display: flex;">
@@ -129,7 +129,7 @@
                 
                 <div>
                     <button type="submit" class="btn btn-lg btn-block  mt-3 mx-auto" 
-                    style="width:100%; letter-spacing: 1px;">ENVIAR PAGAMENTO</button>
+                    style="width:100%; letter-spacing: 1px;">Salvar Presença</button>
                 </div>
             </form>
         </div>
