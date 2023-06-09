@@ -160,16 +160,16 @@ class UserController extends Controller
             $parcelas_atrasadas = $mensalidade->sum('parcelasEmAtraso');
             
             // GRÁFICO 2 DATA DOS PAGAMENTOS
-            $datData = Mensalidade::all();
+            // $datData = Mensalidade::all();
 
-            foreach($datData as $dat) {
-                $datmesRef[] = "'".$dat->mesRef."'";
-                $datTotal[] = user::where('id_mensalidade', $dat->id)->count();
-            }
+            // foreach($datData as $dat) {
+            //     $datmesRef[] = "'".$dat->mesRef."'";
+            //     $datTotal[] = user::where('id_mensalidade', $dat->id)->count();
+            // }
 
             // FORMATAR PARA CHARTJS
-            $datLabel = implode(',', $datmesRef);
-            $datTotal = implode(',', $datTotal);
+            // $datLabel = implode(',', $datmesRef);
+            // $datTotal = implode(',', $datTotal);
 
             // gráfico 1 - Presença
             $usersData = mensalidade::select([

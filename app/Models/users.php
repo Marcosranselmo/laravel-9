@@ -11,7 +11,7 @@ class alunos extends Model
 
     use HasFactory, Notifiable;
 
-    protected $table = "alunos";
+    protected $table = "users";
 
     protected $fillable = [
         'ativo',

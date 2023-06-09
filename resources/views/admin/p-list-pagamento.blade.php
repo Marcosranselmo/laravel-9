@@ -6,11 +6,11 @@
 
     <div class="content-wrapper">
 
-      <div class="container">
+      <div class="container">   
         <div class="row">
           <div class="col-md-12">
             <ol class="breadcrumb">
-              <span class="align-middle mx-auto">Financeiro - Aluno(a): {{ Session::get('lg_firstName')}} {{ Session::get('lg_lastName')}}</span>
+              <span class="align-middle mx-auto">Financeiro - Aluno(a): {{ Auth()->user()->firstName}} {{ Session::get('lg_lastName')}}</span>
             </ol>
           </div>
         </div>
@@ -35,15 +35,15 @@
                       </tr>       
                     </thead> 
                     <tbody>
-                      @foreach ($dados as $dado)
+                      @foreach ($users as $user)
                         <tr role="row" class="odd">
-                          <td class="align-middle" style="width: 14%">{{ $dado->mesRef }}</td>
-                          <td class="align-middle" style="width: 14%">{{ $dado->valorPag }}</td>
-                          <td class="align-middle" style="width: 14%">{{ $dado->formaPag }}</td>
-                          <td class="align-middle" style="width: 14%">{{ $dado->dataPag }}</td>
-                          <td class="align-middle" style="width: 14%">{{ $dado->dataVencimento }}</td>
-                          <td class="align-middle" style="width: 14%">{{ $dado->parcelasEmAtraso }}</td>
-                          <td class="align-middle" style="width: 14%">{{ $dado->parcelasRestante }}</td>
+                          <td class="align-middle" style="width: 14%">{{ $user->mesRef }}</td>
+                          <td class="align-middle" style="width: 14%">{{ $user->valorPag }}</td>
+                          <td class="align-middle" style="width: 14%">{{ $user->formaPag }}</td>
+                          <td class="align-middle" style="width: 14%">{{ $user->dataPag }}</td>
+                          <td class="align-middle" style="width: 14%">{{ $user->dataVencimento }}</td>
+                          <td class="align-middle" style="width: 14%">{{ $user->parcelasEmAtraso }}</td>
+                          <td class="align-middle" style="width: 14%">{{ $user->parcelasRestante }}</td>
                         </tr>
                       @endforeach
                     </tbody>
