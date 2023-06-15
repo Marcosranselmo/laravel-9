@@ -231,22 +231,37 @@ class UserController extends Controller
 
     }
 
-        // VIEW MENSALIDADE ALUNOS -------------------------------------------------------------
-        public function mensalidade_aluno () {
-            return view('/inserir-mensalidade-aluno');
+    // VIEW MENSALIDADE ALUNOS -------------------------------------------------------------
+    public function mensalidade_aluno () {
+        return view('/inserir-mensalidade-aluno');
+    }
+
+    // INSERIR PRESENÇA ALUNOS --------------------------------------------------------
+    public function mensalidade_aluno_inserir(Request $request) {
+        
+        $data = $request->all();
+
+        $user = mensalidade::create($data);
+
+        mensalidade::create($data);
+
+
+        return redirect('/index');
+
+    }
+
+    // ALUNOS - PROFILE
+    public function frm_alunos_profile() {
+        if(Auth::User() && !Session::get('lg_permissao08')) {
+            $user = User::find(Session::get('lg_id'));
+
+            $users = User::get();
+
+            // $users = User::find(Session::get('lg_id'));
+            // $user = User::find(Session::get('lg_id'));
+            return view('/admin/p-frm-alunos_profile', compact('users','user'));
+        } else {
+            return redirect('/dashboard');
         }
-    
-        // INSERIR PRESENÇA ALUNOS --------------------------------------------------------
-        public function mensalidade_aluno_inserir(Request $request) {
-            
-            $data = $request->all();
-    
-            $user = mensalidade::create($data);
-    
-            mensalidade::create($data);
-    
-    
-            return redirect('/index');
-    
-        }
+    }
 }

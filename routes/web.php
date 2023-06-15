@@ -53,6 +53,10 @@ Route::post('mensalidade-aluno-inserir', 'App\Http\Controllers\UserController@me
 
 Route::get('/dashboard/p-pagamento', 'App\Http\Controllers\MensalidadeController@list_pagamento');
 
+// ##### EDITANDO DADOS DO ALUNO #####
+Route::get('/dashboard/p-alunos-profile', 'App\Http\Controllers\UserController@frm_alunos_profile');
+
+
 Route::post('/users', [UserController::class, 'store'])->name('users.store');
 
 Route::get('/', function () {
