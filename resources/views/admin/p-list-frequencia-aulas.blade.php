@@ -1,15 +1,15 @@
 @extends('admin.layout')
 
-@section('titulo', 'Financeiro Aluno') 
+@section('titulo', 'Frequencia Aulas') 
 
-@section('conteudo')
+@section('conteudo')  
 
     <div class="content-wrapper">
       <div class="container col-md-12">
         <div class="row">
           <div class="col-md-12">
             <ol class="breadcrumb">
-              <span class="align-middle mx-auto">Frequencia Aulas - Aluno(a): {{ Session::get('lg_firstName')}} {{ Session::get('lg_lastName')}}</span>
+              <span class="align-middle mx-auto">Frequencia Aulas - Aluno(a): {{ auth()->user()->firstName}} {{ auth()->user()->lastName}}</span>
             </ol>
           </div>
         </div>
@@ -31,12 +31,12 @@
                       </tr>       
                     </thead> 
                     <tbody>
-                      @foreach ($dados as $dado)
+                      @foreach ($users as $user)
                         <tr role="row" class="odd">
-                          <td class="align-middle" style="width: 14%">{{ $dado->diaDaSemana }}</td>
-                          <td class="align-middle" style="width: 14%">{{ $dado->dataAula }}</td>
-                          <td class="align-middle" style="width: 14%">{{ $dado->Presente }}</td>
-                          <td class="align-middle" style="width: 14%">{{ $dado->Ausente }}</td>
+                          <td class="align-middle" style="width: 14%">{{ $user->diaDaSemana }}</td>
+                          <td class="align-middle" style="width: 14%">{{ $user->date }}</td>
+                          <td class="align-middle" style="width: 14%">{{ $user->presente }}</td>
+                          <td class="align-middle" style="width: 14%">{{ $user->ausente }}</td>
                         </tr>
                       @endforeach
                     </tbody>

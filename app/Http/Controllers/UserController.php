@@ -231,11 +231,6 @@ class UserController extends Controller
 
     }
 
-    // VIEW MENSALIDADE ALUNOS -------------------------------------------------------------
-    public function mensalidade_aluno () {
-        return view('/inserir-mensalidade-aluno');
-    }
-
     // INSERIR PRESENÇA ALUNOS --------------------------------------------------------
     public function mensalidade_aluno_inserir(Request $request) {
         
@@ -249,6 +244,44 @@ class UserController extends Controller
         return redirect('/index');
 
     }
+
+    // VIEW PAGAMENTO ALUNOS -------------------------------------------------------------
+    public function pagamento_aluno () {
+        return view('/inserir-pagamento-aluno');
+    }
+
+    // INSERIR PAGAMENTO ALUNOS --------------------------------------------------------
+    public function pagamento_aluno_inserir(Request $request) {
+    
+        $data = $request->all();
+
+        $user = mensalidade::create($data);
+
+        mensalidade::create($data);
+
+
+        return redirect('/index');
+
+    }
+
+    // LISTA - FREQUENCIA AULAS
+    public function list_frequencia_aulas() {
+        if(Auth::User() && !Session::get('lg_permissao08')) {
+            $users = frequenciaaulas::get();
+            // $user = user::find(Session::get('lg_id'));
+            // $user = DB::table('users')->where('user.id', '!=',  
+            // Session::get('lg_id'))->orderBy('firstName','asc')->paginate(15);
+            return view('/admin/p-list-frequencia-aulas',compact('users'));
+        } else {
+            return redirect('/dashboard');
+        }
+    }
+
+
+
+
+
+
 
     // ALUNOS - PROFILE
     public function frm_alunos_profile() {

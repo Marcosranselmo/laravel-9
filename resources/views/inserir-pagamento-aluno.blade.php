@@ -80,14 +80,14 @@
                 </div>  
             @endif
         
-            <form id="formCreate" action="/mensalidade-aluno-inserir" method="post" enctype="multipart/form-data">
+            <form id="formCreate" action="/pagamento-aluno-inserir" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-row mt-0"> 
                     <div class="col-md-12 col-sm-12">
                         {{-- <div class="alert alert-success text-center mt-2" role="alert">Tudo certo! Acesse o <b> link enviado no seu email </b> e prossiga!</div>   --}}
                         @include('components.flash-message')
                         
-                        <h2>Inserir Mensalidade Alunos</h2>
+                        <h2>Inserir Pagamento Aluno</h2>
                     </div>
                     <div class="col-md-12 col-sm-12" style="background: white; 
                     justify-content: center; display: flex;">
@@ -106,24 +106,48 @@
                             <input type="text" name="lastName" id="lastName" class="form-control" placeholder="Último nome...">
                         </div>
                         <div class="form-group col-md-4 col-sm-6">
-                            <label class="mb-0">diaDaSemana</label>
-                            <input type="text" name="diaDaSemana" id="diaDaSemana" class="form-control" placeholder="Dia da semana...">
+                            <label class="mb-0">Mês Ref.</label>
+                            <input type="text" name="mesRef" id="mesRef" class="form-control" placeholder="Mês Referencia">
                         </div>
                         <div class="form-group col-md-4 col-sm-6">
-                            <label class="mb-0">Mês</label>
-                            <input type="text" name="mes" id="mes" class="form-control" placeholder="Mês">
+                            <label class="mb-0">Valor Pag.</label>
+                            <input type="text" name="valorPag" id="valorPag" class="form-control" placeholder="Valor Pagamento">
                         </div>
                         <div class="form-group col-md-4 col-sm-6">
-                            <label for="date" class="mb-0">Data presença</label>
-                            <input type="date" name="date" id="date" class="form-control" placeholder="Dia da aula">
+                            <label class="mb-0">Forma Pagamento</label>
+                            <input type="text" name="formaPag" id="formaPag" class="form-control" placeholder="Forma Pagamento">
                         </div>
-                        <div class="form-group col-md-2 col-sm-2">
-                            <label class="mb-0">Presente</label>
-                            <input type="text" name="Presente" id="Presente" class="form-control mt-0 number" placeholder="Presente">
+                        <div class="form-group col-md-4 col-sm-6">
+                            <label class="mb-0">Data Pagmento</label>
+                            <input type="text" name="dataPag" id="dataPag" class="form-control mt-0" placeholder="Data Pagamento">
                         </div>
-                        <div class="form-group col-md-2 col-sm-2">
-                            <label class="mb-0">Ausente</label>
-                            <input type="text" name="Ausente" id="Ausente" class="form-control mt-0 number" placeholder="Ausente">
+                        <div class="form-group col-md-4 col-sm-6">
+                            <label class="mb-0">Valor Mensal</label>
+                            <input type="text" name="valorMensal" id="valorMensal" class="form-control mt-0" placeholder="Valor Mensal">
+                        </div>
+                        <div class="form-group col-md-4 col-sm-6">
+                            <label class="mb-0">Data Inicio</label>
+                            <input type="text" name="dataInicio" id="dataInicio" class="form-control mt-0" placeholder="Data Inicio">
+                        </div>
+                        <div class="form-group col-md-4 col-sm-6">
+                            <label class="mb-0">Data Término</label>
+                            <input type="text" name="dataTermino" id="dataTermino" class="form-control mt-0" placeholder="Data Término">
+                        </div>
+                        <div class="form-group col-md-4 col-sm-6">
+                            <label class="mb-0">Data Vencimento</label>
+                            <input type="text" name="dataVencimento" id="dataVencimento" class="form-control mt-0" placeholder="Data Vencimento">
+                        </div>
+                        <div class="form-group col-md-4 col-sm-6">
+                            <label class="mb-0">Qtd Parcelas</label>
+                            <input type="text" name="qtdParcelas" id="qtdParcelas" class="form-control mt-0" placeholder="Qtd Parcelas">
+                        </div>
+                        <div class="form-group col-md-4 col-sm-6">
+                            <label class="mb-0">Parcelas Restante</label>
+                            <input type="text" name="parcelasRestante" id="parcelasRestante" class="form-control mt-0" placeholder="Parcelas Restantes">
+                        </div>
+                        <div class="form-group col-md-4 col-sm-6">
+                            <label class="mb-0">Parc. em Atraso</label>
+                            <input type="text" name="parcelasEmAtraso" id="parcelasEmAtraso" class="form-control mt-0" placeholder="Parcelas em atraso">
                         </div>
                 </div>     
                 
