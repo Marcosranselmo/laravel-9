@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('meses'); 
             $table->string('presente'); 
             $table->string('ausente');
-            $table->string('date');
+            $table->string('date');    
            
             $table->unsignedBigInteger('id_user');
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
