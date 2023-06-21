@@ -78,7 +78,7 @@
                         @endforeach
                     </ul>
                 </div>  
-            @endif
+            @endif  
         
             <form id="formCreate" action="/pagamento-aluno-inserir" method="post" enctype="multipart/form-data">
                 @csrf

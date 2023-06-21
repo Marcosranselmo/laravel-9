@@ -38,7 +38,7 @@
                           <td class="align-middle" style="width: 14%">{{ $user->presente }}</td>
                           <td class="align-middle" style="width: 14%">{{ $user->ausente }}</td>
                         </tr>
-                      @endforeach
+                      @endforeach  
                     </tbody>
                   </table>
                 </div> 
