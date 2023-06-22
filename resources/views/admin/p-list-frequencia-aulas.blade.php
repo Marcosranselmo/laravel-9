@@ -31,7 +31,7 @@
                       </tr>       
                     </thead> 
                     <tbody>
-                      @foreach ($users as $user)
+                      @foreach ($users as $user)  
                         <tr role="row" class="odd">
                           <td class="align-middle" style="width: 14%">{{ $user->diaDaSemana }}</td>
                           <td class="align-middle" style="width: 14%">{{ $user->date }}</td>
@@ -45,7 +45,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div>      
       </div>    
     </div>
 

@@ -18,9 +18,6 @@ Route::get('/users/create', [UserController::class, 'create'])->name('users.crea
 Route::post('/users', [UserController::class, 'store'])->name('users.store');
 // Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
 
-
-
-
 Route::view('/login', 'login.form')->name('login.form');
 // Route::get('/login', 'App\Http\Controllers\LoginController@login_form');
 Route::post('/auth', [LoginController::class, 'auth'])->name('login.auth');

@@ -198,7 +198,6 @@ class UserController extends Controller
         }
     }
     
-
     // ALUNOS - LISTA
     public function list_alunos() {
         if(Auth::User() && !Session::get('lg_permissao08')) {
@@ -219,69 +218,45 @@ class UserController extends Controller
 
     // INSERIR PRESENÇA ALUNOS --------------------------------------------------------
     public function presenca_aluno_inserir(Request $request) {
-        
         $data = $request->all();
-
         $user = frequenciaaulas::create($data);
-
         frequenciaaulas::create($data);
 
-
         return redirect('/index');
-
     }
 
     // INSERIR PRESENÇA ALUNOS --------------------------------------------------------
     public function mensalidade_aluno_inserir(Request $request) {
-        
         $data = $request->all();
-
         $user = mensalidade::create($data);
-
         mensalidade::create($data);
-
-
         return redirect('/index');
-
     }
 
     // VIEW PAGAMENTO ALUNOS -------------------------------------------------------------
     public function pagamento_aluno () {
-        return view('/inserir-pagamento-aluno');
-    }
+        if(Auth::User() && !Session::get('lg_permissao08')) {
+        $users = mensalidade::get();
+        return view('/admin/inserir-pagamento-aluno',compact('users'));
+    }}
 
     // INSERIR PAGAMENTO ALUNOS --------------------------------------------------------
     public function pagamento_aluno_inserir(Request $request) {
-    
         $data = $request->all();
-
-        $user = mensalidade::create($data);
-
+        $users = mensalidade::create($data);
         mensalidade::create($data);
-
-
-        return redirect('/index');
-
+        return redirect('/index',compact('data'));
     }
 
     // LISTA - FREQUENCIA AULAS
     public function list_frequencia_aulas() {
         if(Auth::User() && !Session::get('lg_permissao08')) {
             $users = frequenciaaulas::get();
-            // $user = user::find(Session::get('lg_id'));
-            // $user = DB::table('users')->where('user.id', '!=',  
-            // Session::get('lg_id'))->orderBy('firstName','asc')->paginate(15);
             return view('/admin/p-list-frequencia-aulas',compact('users'));
         } else {
             return redirect('/dashboard');
         }
     }
-
-
-
-
-
-
 
     // ALUNOS - PROFILE
     public function frm_alunos_profile() {
