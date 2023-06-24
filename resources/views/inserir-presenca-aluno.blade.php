@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matrícula Bairro Aparecida</title>
+    <title>Inserir Presença Aluno</title>
 
     <link rel="stylesheet" type="text/css" href="css/matricula-b-a.css">
 
@@ -111,25 +111,25 @@
                         </div>
                         <div class="form-group col-md-4 col-sm-6">
                             <label class="mb-0">Mês</label>
-                            <input type="text" name="mes" id="mes" class="form-control" placeholder="Mês">
+                            <input type="text" name="meses" id="meses" class="form-control" placeholder="Mês">
                         </div>
                         <div class="form-group col-md-4 col-sm-6">
-                            <label for="date" class="mb-0">Data presença</label>
-                            <input type="date" name="date" id="date" class="form-control" placeholder="Dia da aula">
+                            <label class="mb-0">Data presença</label>
+                            <input type="text" name="date" id="date" class="form-control date" placeholder="Dia da aula">
                         </div>
                         <div class="form-group col-md-2 col-sm-2">
                             <label class="mb-0">Presente</label>
-                            <input type="text" name="Presente" id="Presente" class="form-control mt-0 number" placeholder="Presente">
+                            <input type="text" name="presente" id="presente" class="form-control mt-0 number" placeholder="Presente">
                         </div>
                         <div class="form-group col-md-2 col-sm-2">
                             <label class="mb-0">Ausente</label>
-                            <input type="text" name="Ausente" id="Ausente" class="form-control mt-0 number" placeholder="Ausente">
+                            <input type="text" name="ausente" id="ausente" class="form-control mt-0 number" placeholder="Ausente">
                         </div>
                 </div>     
                 
                 <div>
                     <button type="submit" class="btn btn-lg btn-block  mt-3 mx-auto" 
-                    style="width:100%; letter-spacing: 1px;">Salvar Presença</button>
+                    style="width:100%; letter-spacing: 1px;">Iserir Presença Aluno</button>
                 </div>
             </form>
         </div>
@@ -181,12 +181,17 @@
                         minlength: 3,
                         maxlength: 30
                     },
-                    // numero:{
-                    //     required: true,
-                    //     minlength: 1,
-                    //     maxlength: 4
-                    // },
-                    // diaDaSemana:{
+                    diaDaSemana:{
+                        required: true,
+                        minlength: 3,
+                        maxlength: 30
+                    },
+                    meses:{
+                        required: true,
+                        minlength: 3,
+                        maxlength: 15
+                    },
+                    // date:{
                     //     required: true,
                     //     minlength: 3,
                     //     maxlength: 30

@@ -219,19 +219,19 @@ class UserController extends Controller
     // INSERIR PRESENÇA ALUNOS --------------------------------------------------------
     public function presenca_aluno_inserir(Request $request) {
         $data = $request->all();
-        $user = frequenciaaulas::create($data);
+        // $user = frequenciaaulas::create($data);
         frequenciaaulas::create($data);
 
         return redirect('/index');
     }
 
     // INSERIR PRESENÇA ALUNOS --------------------------------------------------------
-    public function mensalidade_aluno_inserir(Request $request) {
-        $data = $request->all();
-        $user = mensalidade::create($data);
-        mensalidade::create($data);
-        return redirect('/index');
-    }
+    // public function mensalidade_aluno_inserir(Request $request) {
+    //     $data = $request->all();
+    //     $user = mensalidade::create($data);
+    //     mensalidade::create($data);
+    //     return redirect('/index');
+    // }
 
     // VIEW PAGAMENTO ALUNOS -------------------------------------------------------------
     public function pagamento_aluno () {

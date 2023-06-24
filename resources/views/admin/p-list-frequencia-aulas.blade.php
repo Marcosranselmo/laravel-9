@@ -9,7 +9,7 @@
         <div class="row">
           <div class="col-md-12">
             <ol class="breadcrumb">
-              <span class="align-middle mx-auto">Frequencia Aulas - Aluno(a): {{ auth()->user()->firstName}} {{ auth()->user()->lastName}}</span>
+              <span class="align-middle mx-auto">Frequencia Aulas - Aluno(a): {{ auth()->user()->firstName}} {{ auth()->user()->lastName}} </span>
             </ol>
           </div>
         </div>
@@ -24,6 +24,7 @@
                   <table class="table table-striped table-bordered" role="grid">
                     <thead>
                       <tr role="row">
+                        <th class="align-middle">Mês</th>
                         <th class="align-middle">Dia Semana</th>
                         <th class="align-middle">Data</th>
                         <th class="align-middle">Presente</th>
@@ -33,10 +34,11 @@
                     <tbody>
                       @foreach ($users as $user)  
                         <tr role="row" class="odd">
-                          <td class="align-middle" style="width: 14%">{{ $user->diaDaSemana }}</td>
-                          <td class="align-middle" style="width: 14%">{{ $user->date }}</td>
-                          <td class="align-middle" style="width: 14%">{{ $user->presente }}</td>
-                          <td class="align-middle" style="width: 14%">{{ $user->ausente }}</td>
+                          <td class="align-middle" style="width: 10%">{{ $user->meses }}</td>
+                          <td class="align-middle" style="width: 10%">{{ $user->diaDaSemana }}</td>
+                          <td class="align-middle" style="width: 10%">{{ $user->date }}</td>
+                          <td class="align-middle" style="width: 10%">{{ $user->presente }}</td>
+                          <td class="align-middle" style="width: 10%">{{ $user->ausente }}</td>
                         </tr>
                       @endforeach  
                     </tbody>
