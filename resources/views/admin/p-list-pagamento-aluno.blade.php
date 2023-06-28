@@ -1,6 +1,6 @@
 @extends('admin.layout')
 
-@section('titulo', 'Financeiro Aluno') 
+@section('titulo', 'Pagamento Alunos') 
 
 @section('conteudo')
 
@@ -10,7 +10,9 @@
         <div class="row">
           <div class="col-md-12">
             <ol class="breadcrumb">
-              <span class="align-middle mx-auto">Financeiro - Aluno(a): {{ Auth()->user()->firstName}} {{ Session::get('lg_lastName')}}</span>
+              <span class="align-middle mx-auto">Financeiro - Aluno(a): {{ Auth()->user()->firstName}} 
+                                                                        {{ Auth()->user()->lastName }} / 
+                                                                       </span>
             </ol>
           </div>
         </div>

@@ -77,7 +77,7 @@
                             <li>{{$error}}</li>                        
                         @endforeach
                     </ul>
-                </div>  
+                </div>        
             @endif  
         
             <form id="formCreate" action="/pagamento-aluno-inserir" method="post" enctype="multipart/form-data">
@@ -91,7 +91,7 @@
                     </div>
                     <div class="col-md-12 col-sm-12" style="background: white; 
                     justify-content: center; display: flex;">
-                        <a href="/"><img src="../imgp/logo-site-estudando-musica.png" 
+                        <a href="/"><img src="../imgp/logo-site-estudando-musica.png"   
                             class="img-fluid" alt="mdo" width="120" height="100"></a>
                     </div>
                     
@@ -105,26 +105,45 @@
                             <label class="mb-0">Último Nome</label>
                             <input type="text" name="lastName" id="lastName" class="form-control" placeholder="Último nome...">
                         </div>
-                        <div class="form-group col-md-4 col-sm-6">
-                            <label class="mb-0">Mês Ref.</label>
-                            <input type="text" name="mesRef" id="mesRef" class="form-control" placeholder="Mês Referencia">
+                        <div class="form-group col-md-4 col-6">
+                            <label class="mb-0">Mês Referencia</label>
+                            <select name="mesRef" id="mesRef" class="form-control" placeholder="Mês referencia">
+                                <option selected>Selecione</option>
+                                <option>Janeiro</option>
+                                <option>Fevereiro</option>
+                                <option>Março</option>
+                                <option>Abril</option>
+                                <option>Maio</option>
+                                <option>Junho</option>
+                                <option>Julho</option>
+                                <option>Agosto</option>
+                                <option>Setembro</option>
+                                <option>Outubro</option>
+                                <option>Novembro</option>
+                                <option>Dezembro</option>
+                            </select>
                         </div>
                         <div class="form-group col-md-4 col-sm-6">
                             <label class="mb-0">Valor Pag.</label>
-                            <input type="text" name="valorPag" id="valorPag" class="form-control" placeholder="Valor Pagamento">
+                            <input type="text" name="valorPag" id="valorPag" class="form-control money" placeholder="Valor Pagamento">
                         </div>
-                        <div class="form-group col-md-4 col-sm-6">
+                        <div class="form-group col-md-4 col-6">
                             <label class="mb-0">Forma Pagamento</label>
-                            <input type="text" name="formaPag" id="formaPag" class="form-control" placeholder="Forma Pagamento">
+                            <select name="formaPag" id="formaPag" class="form-control" placeholder="Pagamento via">
+                                <option selected>Selecione</option>
+                                <option>Cartão</option>
+                                <option>Dinheiro</option>
+                                <option>Pix</option>
+                            </select>
                         </div>
                         <div class="form-group col-md-4 col-sm-6">
-                            <label class="mb-0">Data Pagmento</label>
-                            <input type="text" name="dataPag" id="dataPag" class="form-control mt-0" placeholder="Data Pagamento">
+                            <label class="mb-0">Data Pagamento</label>
+                            <input type="text" name="dataPag" id="dataPag" class="form-control mt-0 date" placeholder="Data Pagamento">
                         </div>
-                        <div class="form-group col-md-4 col-sm-6">
+                        {{-- <div class="form-group col-md-4 col-sm-6">
                             <label class="mb-0">Valor Mensal</label>
                             <input type="text" name="valorMensal" id="valorMensal" class="form-control mt-0" placeholder="Valor Mensal">
-                        </div>
+                        </div> --}}
                         <div class="form-group col-md-4 col-sm-6">
                             <label class="mb-0">Data Inicio</label>
                             <input type="text" name="dataInicio" id="dataInicio" class="form-control mt-0" placeholder="Data Inicio">
@@ -153,7 +172,7 @@
                 
                 <div>
                     <button type="submit" class="btn btn-lg btn-block  mt-3 mx-auto" 
-                    style="width:100%; letter-spacing: 1px;">SALVAR MENSALIDADE</button>
+                    style="width:100%; letter-spacing: 1px;">INSERIR PAGAMENTO ALUNO</button>
                 </div>
             </form>
         </div>
@@ -205,16 +224,6 @@
                         minlength: 3,
                         maxlength: 30
                     },
-                    // numero:{
-                    //     required: true,
-                    //     minlength: 1,
-                    //     maxlength: 4
-                    // },
-                    // diaDaSemana:{
-                    //     required: true,
-                    //     minlength: 3,
-                    //     maxlength: 30
-                    // },
                     Presente:{
                         required: true,
                         number: true,
@@ -238,12 +247,12 @@
         $('.cep').mask('00000-000');
         $('.phone').mask('(00) 00000-0000');
         $('.number').mask('0000');
-
+        $('.money').mask('00,00');
 
    
         // $('.time').mask('00:00:00');
         // $('.cpf').mask('000.000.000-00');
-        // $('.money').mask('000.000.000.000,00');
+
     });
     </script>
 </body>

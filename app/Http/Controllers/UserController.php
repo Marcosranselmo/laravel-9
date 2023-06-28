@@ -19,7 +19,7 @@ class UserController extends Controller
 
     public function index() {
         $users = User::get();
-        return view('index', compact('users'));
+        return view('index',compact('users'));
     }
 
     // CRIAR USUÁRIO ----------------------------------------------------------------------    
@@ -211,6 +211,8 @@ class UserController extends Controller
         }
     }
 
+
+
     // VIEW PRESENÇA ALUNOS -------------------------------------------------------------
     public function presenca_aluno () {
         return view('/inserir-presenca-aluno');
@@ -219,33 +221,9 @@ class UserController extends Controller
     // INSERIR PRESENÇA ALUNOS --------------------------------------------------------
     public function presenca_aluno_inserir(Request $request) {
         $data = $request->all();
-        // $user = frequenciaaulas::create($data);
+        // $users = mensalidade::create($data);
         frequenciaaulas::create($data);
-
         return redirect('/index');
-    }
-
-    // INSERIR PRESENÇA ALUNOS --------------------------------------------------------
-    // public function mensalidade_aluno_inserir(Request $request) {
-    //     $data = $request->all();
-    //     $user = mensalidade::create($data);
-    //     mensalidade::create($data);
-    //     return redirect('/index');
-    // }
-
-    // VIEW PAGAMENTO ALUNOS -------------------------------------------------------------
-    public function pagamento_aluno () {
-        if(Auth::User() && !Session::get('lg_permissao08')) {
-        $users = mensalidade::get();
-        return view('/admin/inserir-pagamento-aluno',compact('users'));
-    }}
-
-    // INSERIR PAGAMENTO ALUNOS --------------------------------------------------------
-    public function pagamento_aluno_inserir(Request $request) {
-        $data = $request->all();
-        $users = mensalidade::create($data);
-        mensalidade::create($data);
-        return redirect('/index',compact('data'));
     }
 
     // LISTA - FREQUENCIA AULAS
@@ -257,6 +235,34 @@ class UserController extends Controller
             return redirect('/dashboard');
         }
     }
+
+
+
+    // VIEW PAGAMENTO ALUNOS -------------------------------------------------------------
+    public function pagamento_aluno () {
+        return view('inserir-pagamento-aluno');
+        }
+
+    // INSERIR PAGAMENTO ALUNOS --------------------------------------------------------
+    public function pagamento_aluno_inserir(Request $request) {
+        $data = $request->all();
+        // $users = mensalidade::create($data);
+        mensalidade::create($data);
+        return redirect('/index');
+    }
+
+    // LISTA - PAGAMENTO ALUNOS
+    public function list_pagamento_aluno() {
+        if(Auth::User() && !Session::get('lg_permissao08')) {
+        
+            $users = mensalidade::get();
+            return view('/admin/p-list-pagamento-aluno',compact('users'));
+        } else {
+            return redirect('/dashboard');
+        }
+    }
+
+
 
     // ALUNOS - PROFILE
     public function frm_alunos_profile() {

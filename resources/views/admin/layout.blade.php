@@ -111,7 +111,7 @@
             @auth (Session::get('lg_permissao09'))
             <!-- Nav Item - Meus Dados -->
             <li class="nav-item">
-            <a class="nav-link" href="p-pagamento">
+            <a class="nav-link" href="p-list-pagamento-aluno">
                 <i class="fas fa-hand-holding-usd"></i>
                 <span>Meus Pagamentos</span></a>
             </li>

@@ -15,13 +15,14 @@ return new class extends Migration
     {
         Schema::create('mensalidade', function (Blueprint $table) {
             $table->id();
+            
             $table->string('firstName')->nullable(true);
             $table->string('lastName')->nullable(true);
 
             $table->string('mesRef');
             $table->string('valorPag'); 
             $table->string('formaPag');
-            $table->string('dataPag');  
+            $table->string('dataPag');   
 
             $table->string('valorMensal');   
             $table->string('dataInicio');
@@ -32,8 +33,8 @@ return new class extends Migration
             $table->string('parcelasEmAtraso');
             $table->string('imagem')->nullable();
 
-            $table->unsignedBigInteger('id_users');
-            $table->foreign('id_users')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('id_user');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             
             // $table->unsignedBigInteger('id_meses');
             // $table->foreign('id_meses')->references('id')->on('meses')->onDelete('cascade')->onUpdate('cascade');
@@ -41,7 +42,7 @@ return new class extends Migration
             $table->timestamps();
         });
     }
-
+  
     /**
      * Reverse the migrations.
      *

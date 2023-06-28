@@ -15,6 +15,6 @@ class frequenciaaulas extends Model
     'presente', 
     'ausente',
     'date',
-];
+    ];
 
-}
+} 

@@ -44,16 +44,18 @@ Route::get('/dashboard/p-alunos', 'App\Http\Controllers\UserController@list_alun
 
 Route::get('inserir-presenca-aluno', 'App\Http\Controllers\UserController@presenca_aluno');
 Route::post('presenca-aluno-inserir', 'App\Http\Controllers\UserController@presenca_aluno_inserir');
+Route::get('/dashboard/p-frequencia-aulas', 'App\Http\Controllers\UserController@list_frequencia_aulas');
 
 Route::get('inserir-pagamento-aluno', 'App\Http\Controllers\UserController@pagamento_aluno');
 Route::post('pagamento-aluno-inserir', 'App\Http\Controllers\UserController@pagamento_aluno_inserir');
+Route::get('/dashboard/p-list-pagamento-aluno', 'App\Http\Controllers\UserController@list_pagamento_aluno');
 
-Route::get('/dashboard/p-pagamento', 'App\Http\Controllers\MensalidadeController@list_pagamento');
+
 
 // ##### EDITANDO DADOS DO ALUNO #####
 Route::get('/dashboard/p-alunos-profile', 'App\Http\Controllers\UserController@frm_alunos_profile');
 
-Route::get('/dashboard/p-frequencia-aulas', 'App\Http\Controllers\UserController@list_frequencia_aulas');
+// Route::get('/dashboard/p-frequencia-aulas', 'App\Http\Controllers\UserController@list_frequencia_aulas');
 
 
 

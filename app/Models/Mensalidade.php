@@ -4,9 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-   
 
-class Mensalidade extends Model
+class mensalidade extends Model
 {
     protected $table = "mensalidade";
     protected $fillable = [
@@ -25,7 +24,7 @@ class Mensalidade extends Model
     'dataVencimento',
     'qtdParcelas',
     'parcelasRestante',
-    'parcelasEmAtraso',
+    'parcelasEmAtraso', 
     'imagem',
 
     ];
