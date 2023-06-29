@@ -211,8 +211,6 @@ class UserController extends Controller
         }
     }
 
-
-
     // VIEW PRESENÇA ALUNOS -------------------------------------------------------------
     public function presenca_aluno () {
         return view('/inserir-presenca-aluno');
@@ -236,12 +234,10 @@ class UserController extends Controller
         }
     }
 
-
-
     // VIEW PAGAMENTO ALUNOS -------------------------------------------------------------
     public function pagamento_aluno () {
         return view('inserir-pagamento-aluno');
-        }
+    }
 
     // INSERIR PAGAMENTO ALUNOS --------------------------------------------------------
     public function pagamento_aluno_inserir(Request $request) {
@@ -263,6 +259,33 @@ class UserController extends Controller
     }
 
 
+    //----------------------------------------------------------------------------------------------
+    // ALUNOS - SALVA DADOS PROFILE
+    public function frm_alunos_profile_dados_salva(Request $request, $id) {
+        if(Auth::User() && !Session::get('lg_permissao08')) {
+          
+            if (!$user = User::find($id))
+            // $users = users::find(Session::get('lg_id'));
+            // $dados->firstName = $request->firstName;
+            // $dados->lastName = $request->lastName;
+            // $dados->IdadeAtual = $request->IdadeAtual;
+            // $dados->dataNascimento = $request->dataNascimento;
+            // $dados->escolaridade = $request->escolaridade;
+            // $dados->celular = $request->celular;
+            // $dados->usuario = $request->usuario;
+            // $dados->save();   
+            return redirect('/dashboard/p-alunos-profile');
+
+            $data = $request->only('firstName', 'lastName', 'IdadeAtual', 'dataNascimento', 'escolaridade','celular', 'usuario');
+
+            $user->update();
+
+        } else {
+            return redirect('/dashboard');
+        }
+    }
+
+
 
     // ALUNOS - PROFILE
     public function frm_alunos_profile() {
@@ -278,4 +301,5 @@ class UserController extends Controller
             return redirect('/dashboard');
         }
     }
+
 }

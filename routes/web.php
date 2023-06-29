@@ -51,11 +51,12 @@ Route::post('pagamento-aluno-inserir', 'App\Http\Controllers\UserController@paga
 Route::get('/dashboard/p-list-pagamento-aluno', 'App\Http\Controllers\UserController@list_pagamento_aluno');
 
 
-
 // ##### EDITANDO DADOS DO ALUNO #####
 Route::get('/dashboard/p-alunos-profile', 'App\Http\Controllers\UserController@frm_alunos_profile');
-
-// Route::get('/dashboard/p-frequencia-aulas', 'App\Http\Controllers\UserController@list_frequencia_aulas');
+Route::post('/dashboard/p-alunos-profile-salva-dados', 'App\Http\Controllers\UserController@frm_alunos_profile_dados_salva');
+Route::post('/dashboard/p-alunos-profile-salva-senha', 'App\Http\Controllers\UserController@frm_alunos_profile_senha_salva');
+Route::post('/dashboard/p-alunos-profile-salva-endereco', 'App\Http\Controllers\UserController@frm_alunos_profile_endereco_salva');
+Route::post('/dashboard/p-alunos-profile-salva-curso', 'App\Http\Controllers\UserController@frm_alunos_profile_curso_salva');
 
 
 
