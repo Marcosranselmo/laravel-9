@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\users;
+
 use Illuminate\Support\Facades\DB;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -258,48 +261,49 @@ class UserController extends Controller
         }
     }
 
+    // ALUNOS - PROFILE
+    public function edit($id) {
+        
+            if (!$user = User::find($id));
+            return redirect()->route('/dashboard.edit');
+
+            return view('/dashboard.edit', compact('user'));
+        }
+
 
     //----------------------------------------------------------------------------------------------
     // ALUNOS - SALVA DADOS PROFILE
     public function frm_alunos_profile_dados_salva(Request $request, $id) {
-        if(Auth::User() && !Session::get('lg_permissao08')) {
-          
             if (!$user = User::find($id))
-            // $users = users::find(Session::get('lg_id'));
-            // $dados->firstName = $request->firstName;
-            // $dados->lastName = $request->lastName;
-            // $dados->IdadeAtual = $request->IdadeAtual;
-            // $dados->dataNascimento = $request->dataNascimento;
-            // $dados->escolaridade = $request->escolaridade;
-            // $dados->celular = $request->celular;
-            // $dados->usuario = $request->usuario;
-            // $dados->save();   
             return redirect('/dashboard/p-alunos-profile');
 
-            $data = $request->only('firstName', 'lastName', 'IdadeAtual', 'dataNascimento', 'escolaridade','celular', 'usuario');
+            $data = $request->only('firstName', 
+            'lastName', 'IdadeAtual', 'dataNascimento', 'escolaridade','celular', 'usuario');
 
-            $user->update();
+            $user->update($data);
 
-        } else {
-            return redirect('/dashboard');
+            return redirect('/dashboard/p-alunos-profile');
         }
     }
 
 
 
-    // ALUNOS - PROFILE
-    public function frm_alunos_profile() {
-        if(Auth::User() && !Session::get('lg_permissao08')) {
-            $user = User::find(Session::get('lg_id'));
 
-            $users = User::get();
-
-            // $users = User::find(Session::get('lg_id'));
-            // $user = User::find(Session::get('lg_id'));
-            return view('/admin/p-frm-alunos_profile', compact('users','user'));
-        } else {
-            return redirect('/dashboard');
-        }
-    }
-
-}
+    //----------------------------------------------------------------------------------------------
+    // ALUNOS - SALVA DADOS PROFILE
+    // public function frm_alunos_profile_dados_salva(Request $request) {
+    //     if(Session::get('lg_logado')) {
+    //         $users = User::find(Session::get('lg_id'));
+    //         $users->firstName = $request->firstName;
+    //         $users->lastName = $request->lastName;
+    //         $users->IdadeAtual = $request->IdadeAtual;
+    //         $users->dataNascimento = $request->dataNascimento;
+    //         $users->escolaridade = $request->escolaridade;
+    //         $users->celular = $request->celular;
+    //         $users->usuario = $request->usuario;
+    //         $users->save();   
+    //         return redirect('/dashboard/p-alunos-profile');
+    //     } else {
+    //         return redirect('/dashboard');
+    //     }
+    // }

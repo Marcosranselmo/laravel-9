@@ -52,8 +52,14 @@ Route::get('/dashboard/p-list-pagamento-aluno', 'App\Http\Controllers\UserContro
 
 
 // ##### EDITANDO DADOS DO ALUNO #####
-Route::get('/dashboard/p-alunos-profile', 'App\Http\Controllers\UserController@frm_alunos_profile');
+// Route::get('/dashboard/p-alunos-profile', 'App\Http\Controllers\UserController@frm_alunos_profile');
+
+
+Route::get('/dashboard/{id}/edit', [UserControler::class,  'edit'])->name('admin.edit');
+
 Route::post('/dashboard/p-alunos-profile-salva-dados', 'App\Http\Controllers\UserController@frm_alunos_profile_dados_salva');
+
+// Route::post('/dashboard/p-alunos-profile-salva-dados', 'App\Http\Controllers\UserController@frm_alunos_profile_dados_salva');
 Route::post('/dashboard/p-alunos-profile-salva-senha', 'App\Http\Controllers\UserController@frm_alunos_profile_senha_salva');
 Route::post('/dashboard/p-alunos-profile-salva-endereco', 'App\Http\Controllers\UserController@frm_alunos_profile_endereco_salva');
 Route::post('/dashboard/p-alunos-profile-salva-curso', 'App\Http\Controllers\UserController@frm_alunos_profile_curso_salva');
