@@ -102,12 +102,12 @@
                                 <div class="tab-content">
                                     <!--Edição dados -->
                                     <div class="tab-pane" id="dados">
-                                        <form class="form-horizontal" action="/dashboard/p-alunos-profile-salva-dados" method="POST">
+                                        <form class="form-horizontal" action="/dashboard/p-alunos-profile-salva-dados" method="PUT">
                                             @csrf
                                             <div class="form-group row">
                                                 <label for="firstName" class="col-sm-2 col-form-label" style="text-align: left;">1º Nome:</label>
                                                 <div class="col-sm-6">
-                                                    <input type="text" required name="firstName" id="firstName" class="form-control" placeholder="Primeiro nome" value="{{ $user->firstName }}">
+                                                    <input type="text" required name="firstName" id="firstName" class="form-control" placeholder="Primeiro nome" value="{{ auth()->user()->firstName }}">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -148,8 +148,7 @@
                                             </div>
                                             <div class="form-group row">
                                                 <div class="offset-sm-2 col-sm-10">
-                                                    <a href="{{ route('user.edit', $user->id) }}">Editar</a>
-                                                    {{-- <button type="submit" class="btn btn-success">Salvar</button> --}}
+                                                    <button type="submit" class="btn btn-success">Salvar</button>
                                                 </div>
                                             </div>
                                         </form>
