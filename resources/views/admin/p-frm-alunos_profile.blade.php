@@ -102,7 +102,7 @@
                                 <div class="tab-content">
                                     <!--Edição dados -->
                                     <div class="tab-pane" id="dados">
-                                        <form class="form-horizontal" action="/dashboard/p-alunos-profile-salva-dados" method="PUT">
+                                        <form class="form-horizontal" action="/dashboard/p-alunos-profile-salva-dados" method="POST">
                                             @csrf
                                             <div class="form-group row">
                                                 <label for="firstName" class="col-sm-2 col-form-label" style="text-align: left;">1º Nome:</label>

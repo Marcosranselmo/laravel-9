@@ -78,7 +78,7 @@ class UserController extends Controller
     public function matricula_bairro_cidade_nova_create(Request $request) {
         $data = $request->all();
         $data['password'] = bcrypt($request->password);
-        $user = User::create($data);
+        User::create($data);
         return redirect('/index');
     }
 
@@ -248,7 +248,6 @@ class UserController extends Controller
     // INSERIR PAGAMENTO ALUNOS --------------------------------------------------------
     public function pagamento_aluno_inserir(Request $request) {
         $data = $request->all();
-        // $users = mensalidade::create($data);
         mensalidade::create($data);
         return redirect('/index');
     }
@@ -256,7 +255,6 @@ class UserController extends Controller
     // LISTA - PAGAMENTO ALUNOS
     public function list_pagamento_aluno() {
         if(Auth::User() && !Session::get('lg_permissao08')) {
-        
             $users = mensalidade::get();
             return view('/admin/p-list-pagamento-aluno',compact('users'));
         } else {
@@ -267,7 +265,7 @@ class UserController extends Controller
     // ALUNOS - PROFILE
     public function frm_alunos_profile() {
         if(Auth::User() && !Session::get('lg_permissao08')) {
-            $users = mensalidade::get();
+            $users = User::get();
             return view('/admin/p-frm-alunos_profile', compact('users'));
         } else {
             return redirect('/dashboard');
@@ -276,12 +274,14 @@ class UserController extends Controller
 
     //----------------------------------------------------------------------------------------------
     // ALUNOS - SALVA DADOS PROFILE
-    public function frm_alunos_profile_dados_salva(Request $request, $id) {
+    public function frm_alunos_profile_dados_salva(Request $request) {
         if(Auth::User() && !Session::get('lg_permissao08')) {
-            // $dados = alunos::find(Session::get('lg_id'));
-            if (!$user = User::find($id))
-            $data = $request->only('firstName', 'lastName', 'IdadeAtual', 'dataNascimento',
-            'escolaridade', 'celular', 'usuario');
+            $data = user::find(Session::get('lg_id'));
+            $user = user::find(Session::get('lg_id'));
+            // if (!$user = User::find($id))
+            // $data = $request->all();
+            $data = $request->only('firstName', 'lastName', 'IdadeAtual', 'dataNascimento', 'escolaridade', 'celular', 'usuario');
+            // $user = $request->firstName;
             // $user->lastName = $request->lastName;
             // $user->IdadeAtual = $request->IdadeAtual;
             // $user->dataNascimento = $request->dataNascimento;
@@ -290,7 +290,7 @@ class UserController extends Controller
             // $user->usuario = $request->usuario;
             // $user->save();   
             $user->frm_alunos_profile_dados_salva($data);
-            return redirect('/dashboard/p-alunos-profile');
+            return redirect('/dashboard/p-alunos-profile', compact('data','user'));
         } else {
             return redirect('/dashboard');
         }
