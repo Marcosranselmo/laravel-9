@@ -102,7 +102,7 @@
                                 <div class="tab-content">
                                     <!--Edição dados -->
                                     <div class="tab-pane" id="dados">
-                                        <form class="form-horizontal" action="/dashboard/p-alunos-profile-salva-dados" method="POST">
+                                        <form class="form-horizontal" action="/dashboard/p-alunos-profile-salva-dados" method="PUT">
                                             @csrf
                                             <div class="form-group row">
                                                 <label for="firstName" class="col-sm-2 col-form-label" style="text-align: left;">1º Nome:</label>
@@ -116,36 +116,36 @@
                                                     <input type="text" required name="lastName" id="lastName" class="form-control" placeholder="Último nome" value="{{ auth()->user()->lastName}}">
                                                 </div>
                                             </div>
-                                            <div class="form-group row">
+                                            {{-- <div class="form-group row">
                                                 <label for="IdadeAtual" class="col-sm-2 col-form-label" style="text-align: left;">Idade:</label>
                                                 <div class="col-sm-6">
                                                     <input type="text" required name="IdadeAtual" id="IdadeAtual" class="form-control" placeholder="" value="{{ auth()->user()->IdadeAtual}}">
                                                 </div>
-                                            </div>
-                                            <div class="form-group row">
+                                            </div> --}}
+                                            {{-- <div class="form-group row">
                                                 <label for="dataNascimento" class="col-sm-2 col-form-label" style="text-align: left;">Data Nasc:</label>
                                                 <div class="col-sm-6">
                                                     <input type="text" required name="dataNascimento" id="dataNascimento" class="form-control date" placeholder="" value="{{ auth()->user()->dataNascimento}}">
                                                 </div>
-                                            </div>
-                                            <div class="form-group row">
+                                            </div> --}}
+                                            {{-- <div class="form-group row">
                                                 <label for="escolaridade" class="col-sm-2 col-form-label" style="text-align: left;">Escolar:</label>
                                                 <div class="col-sm-6">
                                                     <input type="text" required name="escolaridade" id="escolaridade" class="form-control" placeholder="" value="{{ auth()->user()->escolaridade}}">
                                                 </div>
-                                            </div>
-                                            <div class="form-group row">
+                                            </div> --}}
+                                            {{-- <div class="form-group row">
                                                 <label for="celular" class="col-sm-2 col-form-label" style="text-align: left;">Celular:</label>
                                                 <div class="col-sm-4">
                                                     <input type="text"  name="celular" id="celular" class="form-control phone" placeholder="celular" value="{{ auth()->user()->celular}}">
                                                 </div>
-                                            </div>
-                                            <div class="form-group row">
+                                            </div> --}}
+                                            {{-- <div class="form-group row">
                                                 <label for="email" class="col-sm-2 col-form-label" style="text-align: left;">Usuário:</label>
                                                 <div class="col-sm-6">
                                                     <input type="text" required name="usuario" id="usuario" class="form-control" placeholder="Email" value="{{ auth()->user()->usuario}}" readonly>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             <div class="form-group row">
                                                 <div class="offset-sm-2 col-sm-10">
                                                     <button type="submit" class="btn btn-success">Salvar</button>
