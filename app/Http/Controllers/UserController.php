@@ -28,6 +28,7 @@ class UserController extends Controller
         return view('index',compact('users'));
     }
 
+
     // CRIAR USUÁRIO ----------------------------------------------------------------------    
     public function create() { 
         return view('users.create');
@@ -64,7 +65,7 @@ class UserController extends Controller
     public function matricula_bairro_aparecida_create(Request $request) {
         $data = $request->all();
         $data['password'] = bcrypt($request->password);
-        $user = User::create($data);
+        User::create($data);
 
         return redirect('/index');
     }
@@ -264,37 +265,23 @@ class UserController extends Controller
 
     // ALUNOS - PROFILE
     public function frm_alunos_profile() {
-        if(Auth::User() && !Session::get('lg_permissao08')) {
-            $users = User::get();
-            return view('/admin/p-frm-alunos_profile', compact('users'));
-        } else {
-            return redirect('/dashboard');
-        }
-    }
+
+            if (!$user = User::find('id'))
+             return view('/admin/p-frm-alunos_profile', compact('user'));
+        } 
 
     //----------------------------------------------------------------------------------------------
     // ALUNOS - SALVA DADOS PROFILE
     public function frm_alunos_profile_dados_salva(Request $request, $id) {
-        // if(Auth::User() && !Session::get('lg_permissao08')) {
-            // $data = User::find(Session::get('lg_id'));
-            // $user = user::find(Session::get('lg_id'));
-            if (!$user = User::find($id))
-            return redirect()->route('/dashboard/p-alunos-profile');
-            $data = $request->only('firstName', 'lastName');
-            // $user = $request->firstName;
-            // $user->firstName = $request->firstName;
-            // $user->lastName = $request->lastName;
-            // $user->IdadeAtual = $request->IdadeAtual;
-            // $user->dataNascimento = $request->dataNascimento;
-            // $user->escolaridade = $request->escolaridade;
-            // $user->celular = $request->celular;
-            // $user->usuario = $request->usuario;
-            // $data->save();   
-            $user->frm_alunos_profile_dados_salva();
-            
 
-        // } else {
-        //     return redirect('/dashboard');
-        // }
+        if (!$user = User::find($id))
+            return redirect('dashboard/frm-alunos-profile',compact('user'));
+
+       dd($request->all());
+
+        $user->frm_alunos_profile_dados_salva();
+           
     }
 }
+
+

@@ -36,11 +36,11 @@
                     <div class="col-md-12 mt-3"><h5>Dados pessoais</h5></div>
                     <div class="form-group col-md-4">
                       <label class="mb-0">Primeiro nome</label>
-                      <input  type="text" class="form-control mt-0" name="firstName" required="required" value="{{ $user->firstName }}">
+                      <input  type="text" class="form-control mt-0" name="firstName" required="required" value="{{ auth()->user()->firstName }}">
                     </div> 
                     <div class="form-group col-md-4">
                       <label class="mb-0">Último nome</label>
-                      <input type="text" class="form-control mt-0" name="lastName" required="required" value="{{ $user->lastName }}">
+                      <input type="text" class="form-control mt-0" name="lastName" required="required" value="{{ auth()->user()->lastName }}">
                     </div>  
                     <div class="form-group col-md-4">
                       <label class="mb-0">Número celular</label>
